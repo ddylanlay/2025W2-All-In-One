@@ -10,3 +10,4 @@
 * Ryan Park - rpar0034@student.monash.edu / r.park2801@gmail.com
 * Dylan Lay - dlay0006@student.monash.edu.au / laydylan13@gmail.com
 * Tony Ly - tonyly0009@gmail.com
+* Sona Hariharan - shar0108@student.monash.edu | sonahariharan067@gmail.com
