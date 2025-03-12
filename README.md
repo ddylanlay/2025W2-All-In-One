@@ -10,3 +10,5 @@
 * Ryan Park - rpar0034@student.monash.edu / r.park2801@gmail.com
 * Dylan Lay - dlay0006@student.monash.edu.au / laydylan13@gmail.com
 * Tony Ly - tonyly0009@gmail.com
+* Tristan Nguyen - tngu0294@student.monash.edu
+  \
