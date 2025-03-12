@@ -6,4 +6,7 @@
 * Akash Kamlesh Kapadia - kapadia.akash.k@gmail.com
 * tom macauley - thomas123mac@gmail.com
 * Thomas Higgins - thig0003@student.monash.edu / thomas.higgins.574@gmail.com 
+* Dylan Hoang - dhoa0009@student.monash.edu / dylanhoang9@gmail.com
+* Ryan Park - rpar0034@student.monash.edu / r.park2801@gmail.com
 * Dylan Lay - dlay0006@student.monash.edu.au / laydylan13@gmail.com
+* Tony Ly - tonyly0009@gmail.com
