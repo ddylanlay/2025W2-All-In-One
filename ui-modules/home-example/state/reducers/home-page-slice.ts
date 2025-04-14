@@ -54,3 +54,5 @@ export const addNewTask = createAsyncThunk(
 
 export const { updateTextboxValue } = homePageSlice.actions;
 export const selectHomePageUiState = (state: RootState) => state.homePage
+
+export default homePageSlice.reducer;

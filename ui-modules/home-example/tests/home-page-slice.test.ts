@@ -1,5 +1,11 @@
 import { expect, test } from "@jest/globals";
+import reducer from "/ui-modules/home-example/state/reducers/home-page-slice";
 
 test("sum test", () => {
-  expect(1 + 1).toBe(2);
+  expect(reducer(undefined, { type: 'unknown' })).toEqual({
+    isLoading: true,
+    taskDescriptions: [],
+    taskIds: [],
+    exampleTextboxValue: "",
+  })
 })
