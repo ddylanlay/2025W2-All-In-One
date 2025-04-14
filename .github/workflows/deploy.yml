@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  galaxy-deployment:
+    runs-on: ubuntu-latest
+    name: Deployment to Galaxy
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install meteor
+        run: npx meteor
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install expect
+        run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install expect
+
+      - name: Galaxy login
+        working-directory: ./scripts
+        env:
+          GALAXY_USERNAME: ${{ secrets.GALAXY_USERNAME }}
+          GALAXY_PASSWORD: ${{ secrets.GALAXY_PASSWORD }}
+        run: |
+          export PATH="/home/runner/.meteor:$PATH"
+          chmod +x ./galaxy-login.sh
+          ./galaxy-login.sh "$GALAXY_USERNAME" "$GALAXY_PASSWORD"
+
+      - name: Deploy
+        run: |
+          export PATH="/home/runner/.meteor:$PATH"
+          export DEPLOY_HOSTNAME=ap-southeast-2.galaxy.meteor.com
+          meteor deploy 20251pm-allinone.au.meteorapp.com --free --mongo

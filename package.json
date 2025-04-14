@@ -1,7 +1,42 @@
 {
-  "type": "module",
+  "name": "meteor-app",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.20.7",
+    "@reduxjs/toolkit": "^2.6.1",
+    "@tailwindcss/postcss": "^4.0.17",
+    "meteor-node-stubs": "^1.2.5",
+    "patch-package": "^8.0.0",
+    "postcss": "^8.5.3",
+    "postcss-load-config": "^6.0.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
+    "react-router": "^7.4.1",
+    "tailwindcss": "^4.0.17"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "app/client/main.tsx",
+      "server": "app/server/main.ts"
+    },
+    "testModule": "app/tests/main.js"
+  },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
+    "@types/meteor": "^2.9.8",
+    "@types/mocha": "^10.0.10",
+    "@types/prop-types": "^15.7.14",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
     "eslint": "^9.23.0",
     "eslint-plugin-react": "^7.37.4",
     "typescript": "^5.8.2",
