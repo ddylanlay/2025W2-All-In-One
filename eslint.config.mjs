@@ -2,15 +2,16 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import jseslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reacteslint from "eslint-plugin-react";
+import globals from "globals";
 
-let parseIgnoreList = [
+let parseIgnoreGlobList = [
   "**/node_modules/**/*",
   "**/.meteor/**/*",
   "**/.git/**/*",
   "**/.vscode/**/*",
 ];
 
-let globalConfigList = [globalIgnores(parseIgnoreList)];
+let globalConfigList = [globalIgnores(parseIgnoreGlobList)];
 
 // React eslint config
 // https://www.npmjs.com/package/eslint-plugin-react
@@ -22,11 +23,16 @@ let reactRecommendedConfig = {
       version: "detect",
     },
   },
+  languageOptions: {
+    globals: {
+      ...globals.browser,
+    },
+  },
   rules: {
     ...reacteslint.configs.flat.recommended.rules,
     "react/no-unescaped-entities": "off",
     "react/jsx-no-target-blank": "warn",
-    "react/jsx-key": "warn",
+    "react/prop-types": "warn",
   },
 };
 
@@ -43,6 +49,7 @@ let tsRecommendedConfig = tseslint.configs.recommended.map((config) => {
     rules: {
       ...config.rules,
       "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   };
 });
@@ -60,7 +67,15 @@ let jsRecommendedConfig = {
   },
 };
 
-let jsConfigList = [jsRecommendedConfig];
+let jsMochaConfig = {
+  languageOptions: {
+    globals: {
+      ...globals.mocha
+    }
+  }
+}
+
+let jsConfigList = [jsRecommendedConfig, jsMochaConfig];
 
 export default defineConfig([
   ...reactConfigList,
