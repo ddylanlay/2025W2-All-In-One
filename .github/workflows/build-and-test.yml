@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install meteor
+        run: npx meteor
+        
       - name: Install dependencies
         run: npm install
 
@@ -17,4 +20,6 @@ jobs:
         run: npm run unitTest
 
       - name: Build
-        run: meteor build .build --platforms=web.browser --directory
+        run: |
+          export PATH="/home/runner/.meteor:$PATH"
+          meteor build .build --platforms=web.browser --directory
