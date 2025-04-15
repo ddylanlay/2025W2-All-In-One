@@ -1,0 +1,20 @@
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    name: Build and Test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm run unitTest
+
+      - name: Build
+        run: meteor build .build --platforms=web.browser --directory
