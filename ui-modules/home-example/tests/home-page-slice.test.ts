@@ -17,7 +17,7 @@ test("when the reducer is loaded, then it should return correct initial state", 
   expect(res).toEqual(initialState);
 });
 
-test("when an update to the textbox value is sent, then the updated textbox value should match", () => {
+test("when updateTextboxValue is dispatched, then the updated textbox value should match", () => {
   // ARRANGE
   const newTextboxValue = "test";
   const expectedUpdatedState = {
@@ -32,7 +32,7 @@ test("when an update to the textbox value is sent, then the updated textbox valu
   expect(updatedState).toEqual(expectedUpdatedState);
 });
 
-test("when the tasks are fetched, then the state should be updated with task descriptions and ids that should match the same order", async () => {
+test("when loadTasks is dispatched, then the state should be updated with task descriptions and ids that should match the fetched tasks in the same order", async () => {
   // ARRANGE
   const fakeTasks: Task[] = [
     {
