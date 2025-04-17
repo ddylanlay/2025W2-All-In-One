@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import { Container, createRoot } from "react-dom/client";
 import { Meteor } from "meteor/meteor";
 import { ExampleHomePage } from "/ui-modules/home-example/ExampleHomePage";
 import { BrowserRouter, Routes, Route } from "react-router";
@@ -9,7 +9,7 @@ import { store } from "/app/store";
 Meteor.startup(initialiseReactRoot);
 
 function initialiseReactRoot(): void {
-  const container = document.getElementById("react-target");
+  const container = document.getElementById("react-target") as Container;
   const root = createRoot(container);
 
   root.render(<AppRoot />);

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HomePageUiState } from "/ui-modules/home-example/state/HomePageUiState";
 import {
-  addNewTask as repoAddNewTask,
-  getAllTasks,
+  repoAddNewTask,
+  repoGetAllTasks,
 } from "/library-modules/domain-models/task-example/repositories/task-repository";
 import { RootState } from "/app/store";
 
@@ -39,7 +39,7 @@ export const homePageSlice = createSlice({
 });
 
 export const loadTasks = createAsyncThunk("homePage/loadTasks", async () => {
-  const tasks = await getAllTasks();
+  const tasks = await repoGetAllTasks();
   return tasks;
 });
 
@@ -54,3 +54,5 @@ export const addNewTask = createAsyncThunk(
 
 export const { updateTextboxValue } = homePageSlice.actions;
 export const selectHomePageUiState = (state: RootState) => state.homePage
+
+export default homePageSlice.reducer;
