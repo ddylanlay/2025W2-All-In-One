@@ -9,7 +9,10 @@ interface SideNavBarProps {
   onClose: () => void;
 }
 
-export function SideNavBar({ isOpen, onClose }: SideNavBarProps): React.JSX.Element {
+export function SideNavBar({
+  isOpen,
+  onClose,
+}: SideNavBarProps): React.JSX.Element {
   return (
     <>
       {/* Sidebar */}
@@ -33,25 +36,43 @@ export function SideNavBar({ isOpen, onClose }: SideNavBarProps): React.JSX.Elem
           {/* Scrollable nav links */}
           <div className="flex-1 overflow-y-auto p-4">
             <nav className="flex flex-col gap-3">
-              <Link to="/" className="hover:underline">Overview</Link>
-              <Link to="/properties" className="hover:underline flex items-center space-x-2">
+              <Link to="/" className="hover:underline">
+                Overview
+              </Link>
+              <Link
+                to="/properties"
+                className="hover:underline flex items-center space-x-2"
+              >
                 <MultipleHousesIcon variant="light" />
                 <span>Managed Properties</span>
               </Link>
-              <Link to="/properties" className="hover:underline flex items-center space-x-2">
+              <Link
+                to="/properties"
+                className="hover:underline flex items-center space-x-2"
+              >
                 <CalendarIcon variant="light" />
                 <span>Calendar</span>
               </Link>
-              <Link to="/support" className="hover:underline">Tasks</Link>
-              <Link to="/support" className="hover:underline">Messages</Link>
-              <Link to="/support" className="hover:underline">Search Properties</Link>
+              <Link to="/support" className="hover:underline">
+                Tasks
+              </Link>
+              <Link to="/support" className="hover:underline">
+                Messages
+              </Link>
+              <Link to="/support" className="hover:underline">
+                Search Properties
+              </Link>
             </nav>
           </div>
 
           {/* Always visible bottom links */}
           <div className="flex flex-col gap-2 p-4 border-t border-gray-200">
-            <Link to="/support" className="hover:underline">Profile</Link>
-            <Link to="/support" className="hover:underline">Settings</Link>
+            <Link to="/support" className="hover:underline">
+              Profile
+            </Link>
+            <Link to="/support" className="hover:underline">
+              Settings
+            </Link>
           </div>
         </div>
       </div>
@@ -62,8 +83,8 @@ export function SideNavBar({ isOpen, onClose }: SideNavBarProps): React.JSX.Elem
           className="fixed inset-0 bg-black z-40"
           onClick={onClose}
           style={{
-            backdropFilter: 'blur(5px)',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backdropFilter: "blur(5px)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
           }}
         />
       )}

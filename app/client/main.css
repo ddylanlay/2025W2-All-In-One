@@ -1,29 +1,31 @@
 @import "tailwindcss";
 body {
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
 }
 
-html, body, #react-target {
+html,
+body,
+#react-target {
   height: 100%;
 }
 
 /* Geist Body Text */
 .geist-body {
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-weight: 400; /* Regular weight for body text */
   font-optical-sizing: auto;
 }
 
 /* Geist Header 1 */
 .geist-h1 {
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-weight: 700; /* Bold weight for headers */
   font-optical-sizing: auto;
 }
 
 /* Geist Header 2 */
 .geist-h2 {
-  font-family: 'Geist', sans-serif;
+  font-family: "Geist", sans-serif;
   font-weight: 600; /* Semibold weight for headers */
   font-optical-sizing: auto;
 }
@@ -78,7 +80,7 @@ html, body, #react-target {
 /* On click, make the white background change to black background */
 .btn-white-blackbackground.clicked {
   border-color: black;
-  color: black; 
+  color: black;
 }
 
 .btn-white-blackbackground:focus,
@@ -117,10 +119,9 @@ html, body, #react-target {
   cursor: not-allowed;
 }
 
-
 .ripple {
   position: absolute;
-  width: 80px;  /* Smaller center circle */
+  width: 80px; /* Smaller center circle */
   height: 80px;
   margin: auto;
   top: 0;
@@ -133,27 +134,21 @@ html, body, #react-target {
 
 @keyframes ripple {
   0% {
-    transform: scale(0);  /* Start small */
-    box-shadow:
-      0 0 0 0 rgba(173, 216, 230, 0.3), /* Light Blue */
-      0 0 0 40px rgba(173, 216, 230, 0.2),
-      0 0 0 80px rgba(173, 216, 230, 0.1),
-      0 0 0 120px rgba(173, 216, 230, 0);
+    transform: scale(0); /* Start small */
+    box-shadow: 0 0 0 0 rgba(173, 216, 230, 0.3),
+      /* Light Blue */ 0 0 0 40px rgba(173, 216, 230, 0.2),
+      0 0 0 80px rgba(173, 216, 230, 0.1), 0 0 0 120px rgba(173, 216, 230, 0);
   }
   50% {
-    transform: scale(1);  /* Full size */
-    box-shadow:
-      0 0 0 20px rgba(173, 216, 230, 0.2),
+    transform: scale(1); /* Full size */
+    box-shadow: 0 0 0 20px rgba(173, 216, 230, 0.2),
       0 0 0 60px rgba(173, 216, 230, 0.15),
-      0 0 0 100px rgba(173, 216, 230, 0.05),
-      0 0 0 140px rgba(173, 216, 230, 0);
+      0 0 0 100px rgba(173, 216, 230, 0.05), 0 0 0 140px rgba(173, 216, 230, 0);
   }
   100% {
-    transform: scale(1.5);  /* Grow a bit more */
-    box-shadow:
-      0 0 0 20px rgba(173, 216, 230, 0.1),
-      0 0 0 60px rgba(173, 216, 230, 0.05),
-      0 0 0 100px rgba(173, 216, 230, 0),
+    transform: scale(1.5); /* Grow a bit more */
+    box-shadow: 0 0 0 20px rgba(173, 216, 230, 0.1),
+      0 0 0 60px rgba(173, 216, 230, 0.05), 0 0 0 100px rgba(173, 216, 230, 0),
       0 0 0 140px rgba(173, 216, 230, 0);
   }
 }

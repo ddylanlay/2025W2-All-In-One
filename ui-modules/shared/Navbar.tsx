@@ -6,7 +6,9 @@ interface TopNavbarProps {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function TopNavbar({ setSidebarOpen }: TopNavbarProps): React.JSX.Element {
+export function TopNavbar({
+  setSidebarOpen,
+}: TopNavbarProps): React.JSX.Element {
   return (
     <header className="sticky top-0 z-50 bg-white text-black py-4 shadow">
       <div className="flex justify-between items-center px-6">
@@ -21,8 +23,12 @@ export function TopNavbar({ setSidebarOpen }: TopNavbarProps): React.JSX.Element
 
         {/* Right-aligned buttons */}
         <div className="flex gap-6 ml-auto">
-          <Link to="/login" className="btn btn-black">Sign In</Link>
-          <Link to="/join" className="btn btn-white">Join</Link>
+          <Link to="/login" className="btn btn-black">
+            Sign In
+          </Link>
+          <Link to="/join" className="btn btn-white">
+            Join
+          </Link>
         </div>
       </div>
     </header>
