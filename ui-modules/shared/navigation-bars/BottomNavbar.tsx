@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { PropManagerLogoIcon } from "/ui-modules/shared/PropManagerLogo";
+import { PropManagerLogoIcon } from "../icons/PropManagerLogoIcon";
 
 export function BottomNavbar(): React.JSX.Element {
   return (

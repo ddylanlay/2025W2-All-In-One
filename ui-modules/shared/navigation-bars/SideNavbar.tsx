@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
-import { EscapeIcon } from "./EscapeIcon";
-import { MultipleHousesIcon } from "./MultipleHousesIcon";
-import { CalendarIcon } from "./CalendarIcon";
+import { EscapeIcon } from "../icons/EscapeIcon";
+import { MultipleHousesIcon } from "../icons/MultipleHousesIcon";
+import { CalendarIcon } from "../icons/CalendarIcon";
 
 interface SideNavBarProps {
   isOpen: boolean;

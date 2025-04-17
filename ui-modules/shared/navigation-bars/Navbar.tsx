@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { PropManagerLogoIcon } from "/ui-modules/shared/PropManagerLogo";
+import { PropManagerLogoIcon } from "../icons/PropManagerLogoIcon";
 
 interface TopNavbarProps {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
