@@ -1,1 +1,159 @@
 @import "tailwindcss";
+body {
+  font-family: 'Geist', sans-serif;
+}
+
+html, body, #react-target {
+  height: 100%;
+}
+
+/* Geist Body Text */
+.geist-body {
+  font-family: 'Geist', sans-serif;
+  font-weight: 400; /* Regular weight for body text */
+  font-optical-sizing: auto;
+}
+
+/* Geist Header 1 */
+.geist-h1 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 700; /* Bold weight for headers */
+  font-optical-sizing: auto;
+}
+
+/* Geist Header 2 */
+.geist-h2 {
+  font-family: 'Geist', sans-serif;
+  font-weight: 600; /* Semibold weight for headers */
+  font-optical-sizing: auto;
+}
+/* Global Button Styles */
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: normal; /* Reduced font weight */
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  display: inline-block;
+}
+
+/* Black background, white text */
+.btn-black {
+  background-color: black;
+  color: white;
+}
+
+.btn-black:hover {
+  background-color: #333;
+}
+
+/* White background, black text */
+.btn-white {
+  background-color: white;
+  color: black;
+  border: none; /* Removed border */
+}
+
+.btn-white:hover {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+/* White coloured button with a grey outline which changes to black background on click */
+.btn-white-blackbackground {
+  background-color: transparent;
+  color: black;
+  border: 2px solid #d1d5db; /* Light gray border */
+  transition: border 0.3s ease;
+}
+
+.btn-white-blackbackground:hover {
+  background-color: black;
+  color: white;
+}
+
+/* On click, make the white background change to black background */
+.btn-white-blackbackground.clicked {
+  border-color: black;
+  color: black; 
+}
+
+.btn-white-blackbackground:focus,
+.btn-white-blackbackground:active {
+  border-color: black; /* Change to black border on focus/active */
+}
+
+/* White background, black text button with grey outline which changes to black on click*/
+.btn-white-outline {
+  background-color: transparent;
+  color: black; /* Ensure text stays black */
+  border: 2px solid #d1d5db; /* Light gray border */
+  transition: border 0.3s ease, color 0.3s ease;
+}
+
+.btn-white-outline:hover {
+  background-color: white;
+  color: black;
+}
+
+/* On click, make the border persist and make the border black */
+.btn-white-outline.clicked {
+  border-color: black;
+  color: black; /* Keep text color black when clicked */
+}
+
+.btn-white-outline:focus,
+.btn-white-outline:active {
+  border-color: black; /* Change to black border on focus/active */
+}
+
+/* Disabled button styles */
+.btn.disabled {
+  background-color: #d3d3d3;
+  color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+
+.ripple {
+  position: absolute;
+  width: 80px;  /* Smaller center circle */
+  height: 80px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  animation: ripple 2.5s ease-in-out infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);  /* Start small */
+    box-shadow:
+      0 0 0 0 rgba(173, 216, 230, 0.3), /* Light Blue */
+      0 0 0 40px rgba(173, 216, 230, 0.2),
+      0 0 0 80px rgba(173, 216, 230, 0.1),
+      0 0 0 120px rgba(173, 216, 230, 0);
+  }
+  50% {
+    transform: scale(1);  /* Full size */
+    box-shadow:
+      0 0 0 20px rgba(173, 216, 230, 0.2),
+      0 0 0 60px rgba(173, 216, 230, 0.15),
+      0 0 0 100px rgba(173, 216, 230, 0.05),
+      0 0 0 140px rgba(173, 216, 230, 0);
+  }
+  100% {
+    transform: scale(1.5);  /* Grow a bit more */
+    box-shadow:
+      0 0 0 20px rgba(173, 216, 230, 0.1),
+      0 0 0 60px rgba(173, 216, 230, 0.05),
+      0 0 0 100px rgba(173, 216, 230, 0),
+      0 0 0 140px rgba(173, 216, 230, 0);
+  }
+}

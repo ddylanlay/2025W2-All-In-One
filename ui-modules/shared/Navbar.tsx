@@ -1,12 +1,30 @@
 import React from "react";
 import { Link } from "react-router";
+import { PropManagerLogoIcon } from "/ui-modules/shared/PropManagerLogo";
 
-export function Navbar(): React.JSX.Element {
+interface TopNavbarProps {
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function TopNavbar({ setSidebarOpen }: TopNavbarProps): React.JSX.Element {
   return (
-    <nav className="p-4 bg-gray-800 text-white flex gap-4">
-      <Link to="/" className="hover:underline">Home</Link>
-      <Link to="/about" className="hover:underline">About</Link>
-      <Link to="/test" className="hover:underline">Test</Link>
-    </nav>
+    <header className="sticky top-0 z-50 bg-white text-black py-4 shadow">
+      <div className="flex justify-between items-center px-6">
+        {/* Left-aligned logo */}
+        <div
+          onClick={() => setSidebarOpen(true)} // Open the sidebar when the logo is clicked
+          className="flex items-center gap-2 cursor-pointer"
+        >
+          <PropManagerLogoIcon variant="dark" />
+          <span className="geist-h1">PropManager</span>
+        </div>
+
+        {/* Right-aligned buttons */}
+        <div className="flex gap-6 ml-auto">
+          <Link to="/login" className="btn btn-black">Sign In</Link>
+          <Link to="/join" className="btn btn-white">Join</Link>
+        </div>
+      </div>
+    </header>
   );
 }

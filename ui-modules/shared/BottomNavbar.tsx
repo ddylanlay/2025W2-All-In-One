@@ -1,11 +1,35 @@
 import React from "react";
 import { Link } from "react-router";
+import { PropManagerLogoIcon } from "/ui-modules/shared/PropManagerLogo";
 
-export function BottomNavBar(): React.JSX.Element {
+
+export function BottomNavbar(): React.JSX.Element {
   return (
-    <nav className="fixed bottom-0 left-0 w-full p-4 bg-gray-800 text-white flex gap-4 justify-center z-50 border-t border-gray-700">
-      <Link to="/" className="hover:underline">Home</Link>
-      <Link to="/about" className="hover:underline">About</Link>
-    </nav>
+    <footer className="bg-[#111827] text-white py-4 mt-8">
+      <div className="flex justify-between items-center px-6">
+        {/* Left-aligned logo */}
+        <Link to="/">
+        <div className="flex items-center gap-2">
+
+          <PropManagerLogoIcon variant="light" />
+          <span className="geist-h1">Prop Manager</span> {/* Applying Geist Header 1 */}
+        </div>
+        </Link>
+
+        {/* Right-aligned links */}
+        <div className="flex gap-6 ml-auto">
+          <Link to="/about" className="hover:underline geist-body">About</Link> 
+          <Link to="/contact" className="hover:underline geist-body">Contact</Link> 
+          <Link to="/privacy-policy" className="hover:underline geist-body">Privacy Policy</Link>
+          <Link to="/terms" className="hover:underline geist-body">Terms</Link>
+        </div>
+      </div>
+
+      {/* Centered copyright text */}
+      <div className="text-center mt-4">
+        <p className="geist-body">© 2025 PropManager. All rights reserved.</p> 
+      </div>
+    </footer>
   );
 }
+
