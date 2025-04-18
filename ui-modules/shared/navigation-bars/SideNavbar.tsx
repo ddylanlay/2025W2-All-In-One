@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { EscapeIcon } from "../icons/EscapeIcon";
 import { MultipleHousesIcon } from "../icons/MultipleHousesIcon";
 import { CalendarIcon } from "../icons/CalendarIcon";
+import { NavBarLink } from "./NavBarLink";
 
 interface SideNavBarProps {
   isOpen: boolean;
@@ -36,32 +37,42 @@ export function SideNavBar({
           {/* Scrollable nav links */}
           <div className="flex-1 overflow-y-auto p-4">
             <nav className="flex flex-col gap-3">
-              <Link to="/" className="hover:underline">
-                Overview
-              </Link>
-              <Link
-                to="/properties"
-                className="hover:underline flex items-center space-x-2"
-              >
-                <MultipleHousesIcon variant="light" />
-                <span>Managed Properties</span>
-              </Link>
-              <Link
-                to="/properties"
-                className="hover:underline flex items-center space-x-2"
-              >
-                <CalendarIcon variant="light" />
-                <span>Calendar</span>
-              </Link>
-              <Link to="/support" className="hover:underline">
-                Tasks
-              </Link>
-              <Link to="/support" className="hover:underline">
-                Messages
-              </Link>
-              <Link to="/support" className="hover:underline">
-                Search Properties
-              </Link>
+              <NavBarLink to="/">Overview</NavBarLink>
+
+              <NavBarLink to="/properties">
+                <span className="flex items-center gap-2">
+                  <MultipleHousesIcon variant="light" />
+                  Managed Properties
+                </span>
+              </NavBarLink>
+
+              <NavBarLink to="/calendar">
+                <span className="flex items-center gap-2">
+                  <CalendarIcon variant="light" />
+                  Managed Properties
+                </span>
+              </NavBarLink>
+
+              <NavBarLink to="/tasks">
+                <span className="flex items-center gap-2">
+                  <CalendarIcon variant="light" />
+                  Tasks
+                </span>
+              </NavBarLink>
+
+              <NavBarLink to="/messages">
+                <span className="flex items-center gap-2">
+                  <CalendarIcon variant="light" />
+                  Messages
+                </span>
+              </NavBarLink>
+
+              <NavBarLink to="/searchproperties">
+                <span className="flex items-center gap-2">
+                  <CalendarIcon variant="light" />
+                  Search Properties
+                </span>
+              </NavBarLink>
             </nav>
           </div>
 

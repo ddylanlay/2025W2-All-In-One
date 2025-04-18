@@ -6,9 +6,8 @@ import { AboutPage } from "/ui-modules/about/AboutPage";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "/app/store";
-import { TopNavbar } from "../../ui-modules/shared/navigation-bars/Navbar";
 import { BottomNavbar } from "../../ui-modules/shared/navigation-bars/BottomNavbar";
-import { SideNavBar } from "../../ui-modules/shared/navigation-bars/SideNavbar";
+
 
 Meteor.startup(initialiseReactRoot);
 
@@ -23,26 +22,16 @@ function initialiseReactRoot(): void {
 }
 
 function AppRoot(): React.JSX.Element {
-  const [isSidebarOpen, setSidebarOpen] = React.useState(false);
-
   return (
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
-          {/* TopNavbar: Pass `setSidebarOpen` prop to control sidebar state */}
-          <TopNavbar setSidebarOpen={setSidebarOpen} />
-
           <Routes>
             <Route path="/" element={<ExampleHomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/test" element={<ExampleHomePage />} />
           </Routes>
 
-          {/* Sidebar & Backdrop */}
-          <SideNavBar
-            isOpen={isSidebarOpen}
-            onClose={() => setSidebarOpen(false)}
-          />
           <BottomNavbar />
         </BrowserRouter>
       </Provider>

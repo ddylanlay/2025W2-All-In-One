@@ -2,13 +2,23 @@ import React, { useEffect } from "react";
 import { Task } from "./components/Task";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { HomePageUiState } from "./state/HomePageUiState";
-import { addNewTask, loadTasks, selectHomePageUiState, updateTextboxValue } from "./state/reducers/home-page-slice";
+import PrimaryButton from "../theming/PrimaryButton";
+import { Link } from "react-router";
+import Ripple from "./Ripple";
+import {
+  addNewTask,
+  loadTasks,
+  selectHomePageUiState,
+  updateTextboxValue,
+} from "./state/reducers/home-page-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "/app/store";
+import { SideNavBar } from "../../ui-modules/shared/navigation-bars/SideNavbar";
+import { TopNavbar } from "../../ui-modules/shared/navigation-bars/Navbar";
 
 export function ExampleHomePage(): React.JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
-  const homePageUiState: HomePageUiState = useSelector(selectHomePageUiState)
+  const homePageUiState: HomePageUiState = useSelector(selectHomePageUiState);
 
   useEffect(() => {
     dispatch(loadTasks());
@@ -41,40 +51,46 @@ function ExampleHomePageBase({
   onNewTaskAdded: (text: string) => void;
   onTextboxChange: (text: string) => void;
 }): React.JSX.Element {
+  const [isSidebarOpen, onSideBarOpened] = React.useState(false);
   if (homePageUiState.isLoading) {
     return <div>Loading...</div>;
   } else {
     return (
       <div className="p-5">
+        {/* TopNavbar: Pass `setSidebarOpen` prop to control sidebar state */}
+        <TopNavbar onSideBarOpened={onSideBarOpened} />
+
+        {/* Sidebar & Backdrop */}
+        <SideNavBar
+          isOpen={isSidebarOpen}
+          onClose={() => onSideBarOpened(false)}
+        />
         <div className="relative flex flex-col items-center justify-center min-h-[80vh] bg-white overflow-hidden px-4">
           {/* Animated Ripple Background */}
-          <div className="ripple pointer-events-none z-0" />
-
+          <Ripple />
           {/* Foreground content */}
           <div className="relative z-10 text-center">
-            <h1 className="text-5xl md:text-6xl font-extrabold text-[#111827] mb-6">
+            <h1
+              className="text-5xl md:text-6xl font-extrabold mb-6"
+              style={{ color: "var(--black)" }}
+            >
               Find your perfect rental home
             </h1>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg mb-6" style={{ color: "var(--dark-grey)" }}>
               Search thousands of rental properties in your area
             </p>
-        {/* Search input and button */}
+            {/* Search input and button */}
             <div className="flex justify-center gap-4">
               <input
                 type="text"
                 placeholder="Enter city or postcode"
-                //value={searchTerm}
-                //onChange={(e) => setSearchTerm(e.target.value)}
-                className="p-2 border border-gray-300 rounded-lg w-64"
+                className="p-2 border border-[color:var(--medium-grey)] rounded-lg w-64 text-black placeholder-[color:var(--medium-grey)]"
               />
-              <button
-                //onClick={handleSearch}
-                className="mt-4 px-6 py-3 bg-[#111827] text-white rounded-xl hover:bg-[#1f2937] transition"
-              >
-                Search
-              </button>
-            </div>
 
+              <Link to="/signup">
+                <PrimaryButton variant="black">Search</PrimaryButton>
+              </Link>
+            </div>
           </div>
         </div>
 

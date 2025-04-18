@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { PropManagerLogoIcon } from "../icons/PropManagerLogoIcon";
+import { NavBarLink } from "./NavBarLink";
 
 export function BottomNavbar(): React.JSX.Element {
   return (
@@ -17,18 +18,10 @@ export function BottomNavbar(): React.JSX.Element {
 
         {/* Right-aligned links */}
         <div className="flex gap-6 ml-auto">
-          <Link to="/about" className="hover:underline geist-body">
-            About
-          </Link>
-          <Link to="/contact" className="hover:underline geist-body">
-            Contact
-          </Link>
-          <Link to="/privacy-policy" className="hover:underline geist-body">
-            Privacy Policy
-          </Link>
-          <Link to="/terms" className="hover:underline geist-body">
-            Terms
-          </Link>
+          <NavBarLink to="/about">About</NavBarLink>
+          <NavBarLink to="/contact">Contact</NavBarLink>
+          <NavBarLink to="/privacy-policy">Privacy Policy</NavBarLink>
+          <NavBarLink to="/terms">Terms</NavBarLink>
         </div>
       </div>
 

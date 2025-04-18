@@ -1,56 +1,45 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AboutPageUiState } from "/ui-modules/about/state/AboutPageUiState";
-import {
-  addNewTask as repoAddNewTask,
-  getAllTasks,
-} from "/library-modules/domain-models/task-example/repositories/task-repository";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "/app/store";
-
-const initialState: AboutPageUiState = {
-  isLoading: true,
-  taskDescriptions: [],
-  taskIds: [],
-  exampleTextboxValue: "",
+// Define the structure of AboutPageUiState
+export type AboutPageUiState = {
+  isLoading: boolean;
+  agentDescription: string;
+  tenantDescription: string;
+  landlordDescription: string;
 };
 
-export const aboutPageSlice = createSlice({
+const initialState: AboutPageUiState = {
+  isLoading: false,
+  agentDescription: "",
+  tenantDescription: "",
+  landlordDescription: "",
+};
+
+const aboutPageSlice = createSlice({
   name: "aboutPage",
-  initialState: initialState,
+  initialState,
   reducers: {
-    updateTextboxValue: (state, action: PayloadAction<string>) => {
-      state.exampleTextboxValue = action.payload;
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
+    setDescriptions: (
+      state,
+      action: PayloadAction<{
+        agentDescription: string;
+        tenantDescription: string;
+        landlordDescription: string;
+      }>
+    ) => {
+      state.agentDescription = action.payload.agentDescription;
+      state.tenantDescription = action.payload.tenantDescription;
+      state.landlordDescription = action.payload.landlordDescription;
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(loadTasks.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(loadTasks.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.taskDescriptions = action.payload.map((task) => task.text);
-        state.taskIds = action.payload.map((task) => task.id);
-      })
-      .addCase(addNewTask.fulfilled, (state, action) => {
-        state.taskDescriptions.push(action.payload.text);
-        state.taskIds.push(action.payload.id);
-      });
-  },
 });
 
-export const loadTasks = createAsyncThunk("aboutPage/loadTasks", async () => {
-  const tasks = await getAllTasks();
-  return tasks;
-});
+export const { setLoading, setDescriptions } = aboutPageSlice.actions;
 
-export const addNewTask = createAsyncThunk(
-  "aboutPage/addNewTask",
-  async (text: string) => {
-    const id = await repoAddNewTask(text);
-    const newTask = { id: id, text: text };
-    return newTask;
-  }
-);
+// Selector to retrieve the AboutPageUiState from the store
+export const selectAboutPageUiState = (state: RootState): AboutPageUiState => state.aboutPage;
 
-export const { updateTextboxValue } = aboutPageSlice.actions;
-export const selectAboutPageUiState = (state: RootState) => state.aboutPage
+export default aboutPageSlice.reducer;

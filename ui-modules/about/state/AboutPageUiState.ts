@@ -1,5 +1,5 @@
-import '/imports/ui/styles/style.css';
+import "/imports/ui/styles/style.css";
 
 export type AboutPageUiState = {
-  isLoading: boolean
-}
+  isLoading: boolean;
+};
