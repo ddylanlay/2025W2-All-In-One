@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
+import { Container, createRoot } from "react-dom/client";
 import { Meteor } from "meteor/meteor";
 import { ExampleHomePage } from "/ui-modules/home-example/ExampleHomePage";
 import { AboutPage } from "/ui-modules/about/AboutPage";

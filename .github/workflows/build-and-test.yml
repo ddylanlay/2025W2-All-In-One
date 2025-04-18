@@ -1,0 +1,27 @@
+name: "Build and test"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    name: Build and Test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install meteor
+        run: npx meteor
+        
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm run unitTest
+
+      - name: Build
+        run: |
+          export PATH="/home/runner/.meteor:$PATH"
+          meteor build .build --platforms=web.browser --directory
