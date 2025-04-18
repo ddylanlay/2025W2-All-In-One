@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { store } from "/app/store";
 import { BottomNavbar } from "../../ui-modules/shared/navigation-bars/BottomNavbar";
 
-
 Meteor.startup(initialiseReactRoot);
 
 function initialiseReactRoot(): void {

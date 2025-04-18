@@ -6,12 +6,13 @@ type NavBarLinkProps = LinkProps & {
   className?: string;
 };
 
-export function NavBarLink({ children, className = "", ...props }: NavBarLinkProps): React.JSX.Element {
+export function NavBarLink({
+  children,
+  className = "",
+  ...props
+}: NavBarLinkProps): React.JSX.Element {
   return (
-    <Link
-      {...props}
-      className={`hover:underline geist-body ${className}`}
-    >
+    <Link {...props} className={`hover:underline geist-body ${className}`}>
       {children}
     </Link>
   );
