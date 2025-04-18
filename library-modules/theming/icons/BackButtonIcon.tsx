@@ -1,17 +1,16 @@
 import React from "react";
 
 export function BackButtonIcon({
-  height,
-  width,
+  className = "",
 }: {
-  height: number;
-  width: number;
+  className?: string;
 }): React.JSX.Element {
   return (
     <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
+      className={className}
+      width="21"
+      height="19"
+      viewBox="0 0 21 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
