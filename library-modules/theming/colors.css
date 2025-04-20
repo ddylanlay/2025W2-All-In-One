@@ -1,5 +1,7 @@
 
 :root {
+  --body-secondary: #6b7280;
   --body-tertiary: #979797;
+  --active-primary: #3b82f6;
   --status-green: #8ee1ad;
 } 
