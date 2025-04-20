@@ -1,6 +1,6 @@
 import React from "react";
 
-export function ListingFeatures({
+export function PropertyFeatures({
   featuresList,
   className = "",
 }: {

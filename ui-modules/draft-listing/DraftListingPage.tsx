@@ -1,5 +1,5 @@
 import React from "react";
-import { ListingFeatures } from "/ui-modules/draft-listing/components/ListingFeatures";
+import { PropertyFeatures } from "/ui-modules/draft-listing/components/PropertyFeatures";
 import { ListingPropertyDetails } from "/ui-modules/draft-listing/components/ListingPropertyDetails";
 import { ImageCarousel } from "/ui-modules/draft-listing/components/ImageCarousel";
 import {
@@ -8,11 +8,15 @@ import {
 } from "/ui-modules/draft-listing/components/ListingSummary";
 import { ListingNavbar } from "/ui-modules/draft-listing/components/ListingNavbar";
 import { ListingDescription } from "/ui-modules/draft-listing/components/ListingDescription";
-import { InspectionBookingList } from "/ui-modules/draft-listing/components/InspectionBookingList";
+import {
+  InspectionBookingList,
+  InspectionBookingListUiState,
+} from "/ui-modules/draft-listing/components/InspectionBookingList";
 
 // TODO: DraftListingPage is likely the actual listing page as well
 // TODO: Use ui object instead of huge list of props
 // TODO: Improve the naming of props, areas -> propertyArea
+// TODO: Add -color prefix to colors in colors.css
 // TODO: Change DraftListingPage to use server data
 
 export function DraftListingPage({
@@ -29,23 +33,36 @@ export function DraftListingPage({
         suburb="Toorak"
         province="VIC"
         postcode="3166"
-        listingFeatures={[
+        listingStatusText="Vacant"
+        listingStatusPillState={ListingStatusPillState.VACANT}
+        summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
+        propertyDescription="Fake property description"
+        propertyFeatures={[
           "Pool",
           "Gym",
           "Garage",
           "Pet friendly",
           "Washing machine",
         ]}
-        listingStatusText="Vacant"
-        listingStatusPillState={ListingStatusPillState.VACANT}
-        summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
-        propertyDescription="Fake property description"
         propertyType="Apartment"
+        inspectionBookingUiStateList={[
+          {
+            date: "21st Jan 2025",
+            startingTime: "11:25pm",
+            endingTime: "11:55pm",
+          },
+          {
+            date: "22nd Jan 2025",
+            startingTime: "1:20pm",
+            endingTime: "1:50pm",
+          },
+        ]}
         area="500m²"
         bathrooms="2"
         parking="2"
         bedrooms="4"
         price="$1500/mth"
+        onBook={() => {}}
       />
     </div>
   );
@@ -57,17 +74,19 @@ function DraftListingPageContent({
   suburb,
   province,
   postcode,
-  listingFeatures,
   listingStatusText,
   listingStatusPillState,
   summaryDescription,
   propertyDescription,
+  propertyFeatures,
   propertyType,
+  inspectionBookingUiStateList,
   area,
   bathrooms,
   parking,
   bedrooms,
   price,
+  onBook,
   className = "",
 }: {
   streetNumber: string;
@@ -75,17 +94,19 @@ function DraftListingPageContent({
   suburb: string;
   province: string;
   postcode: string;
-  listingFeatures: string[];
   listingStatusText: string;
   listingStatusPillState: ListingStatusPillState;
   summaryDescription: string;
   propertyDescription: string;
+  propertyFeatures: string[];
   propertyType: string;
+  inspectionBookingUiStateList: InspectionBookingListUiState[];
   area: string;
   bathrooms: string;
   parking: string;
   bedrooms: string;
   price: string;
+  onBook: (index: number) => void;
   className?: string;
 }): React.JSX.Element {
   return (
@@ -110,12 +131,11 @@ function DraftListingPageContent({
         bedrooms={bedrooms}
         price={price}
       />
-      <ListingFeatures featuresList={listingFeatures} className="w-[300px]" />
-      <InspectionBookingList uiStateList={[{
-        "date": "21st Jan 2025",
-        "startingTime": "11:25pm",
-        "endingTime": "11:55pm"
-      }]}/>
+      <PropertyFeatures featuresList={propertyFeatures} className="w-[300px]" />
+      <InspectionBookingList
+        bookingUiStateList={inspectionBookingUiStateList}
+        onBook={onBook}
+      />
     </div>
   );
 }
