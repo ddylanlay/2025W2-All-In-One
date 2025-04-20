@@ -9,19 +9,41 @@ export function ListingFeatures({
 }): React.JSX.Element {
   return (
     <div className={className}>
-      <span className="geist-semibold text-[18px] block mb-2">Features</span>
-
-      <div className={`flex flex-row flex-wrap gap-y-2 w-[300px] ${className}`}>
-        {featuresList.map((feature) => (
-          <ListingFeaturesPill key={feature} text={feature} className="mr-2" />
-        ))}
-      </div>
-      
+      <Heading text="Features" className="block mb-2" />
+      <FeaturesPillList featuresList={featuresList} />
     </div>
   );
 }
 
-function ListingFeaturesPill({
+function Heading({
+  text,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <span className={`geist-semibold text-[18px] ${className}`}>{text}</span>
+  );
+}
+
+function FeaturesPillList({
+  featuresList,
+  className = "",
+}: {
+  featuresList: string[];
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={`flex flex-row flex-wrap gap-y-2 w-[300px] ${className}`}>
+      {featuresList.map((feature) => (
+        <FeaturesPill key={feature} text={feature} className="mr-2" />
+      ))}
+    </div>
+  );
+}
+
+function FeaturesPill({
   text,
   className = "",
 }: {
