@@ -15,13 +15,14 @@ export function DraftListingPage({
       {/* TODO: change to server data */}
       <NavigationBar headingText="86 Fury Lane - Draft Property Listing" />
       <DraftListingPageContent
-        number="86"
+        streetNumber="86"
         street="Fury Lane"
         suburb="Toorak"
-        state="VIC"
+        province="VIC"
         postCode="3166"
         summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
-        propertyStatus={PropertyStatus.VACANT}
+        listingStatusText="Vacant"
+        listingStatusPillState={ListingStatusPillState.VACANT}
         propertyDescription="Fake property description"
         propertyType="Apartment"
         area="500m²"
@@ -35,13 +36,14 @@ export function DraftListingPage({
 }
 
 function DraftListingPageContent({
-  number,
+  streetNumber,
   street,
   suburb,
-  state,
+  province,
   postCode,
   summaryDescription,
-  propertyStatus,
+  listingStatusText,
+  listingStatusPillState,
   propertyDescription,
   propertyType,
   area,
@@ -51,13 +53,14 @@ function DraftListingPageContent({
   price,
   className = "",
 }: {
-  number: string;
+  streetNumber: string;
   street: string;
   suburb: string;
-  state: string;
+  province: string;
   postCode: string;
   summaryDescription: string;
-  propertyStatus: PropertyStatus;
+  listingStatusText: string;
+  listingStatusPillState: ListingStatusPillState;
   propertyDescription: string;
   propertyType: string;
   area: string;
@@ -70,13 +73,14 @@ function DraftListingPageContent({
   return (
     <div className={`${className}`}>
       <ListingSummary
-        number={number}
+        streetNumber={streetNumber}
         street={street}
         suburb={suburb}
-        state={state}
+        province={province}
         postCode={postCode}
         summaryDescription={summaryDescription}
-        propertyStatus={propertyStatus}
+        listingStatusText={listingStatusText}
+        listingStatusPillState={listingStatusPillState}
       />
       <ImageCarousel />
       <ListingDescription description={propertyDescription} />
@@ -183,36 +187,38 @@ function ListingDescription({
 }
 
 function ListingSummary({
-  number,
+  streetNumber,
   street,
   suburb,
-  state,
+  province,
   postCode,
   summaryDescription,
-  propertyStatus,
+  listingStatusText,
+  listingStatusPillState,
   className = "",
 }: {
-  number: string;
+  streetNumber: string;
   street: string;
   suburb: string;
-  state: string;
+  province: string;
   postCode: string;
   summaryDescription: string;
-  propertyStatus: PropertyStatus;
+  listingStatusText: string;
+  listingStatusPillState: ListingStatusPillState;
   className?: string;
 }): React.JSX.Element {
   return (
     <div className={`flex flex-col ${className}`}>
       <div className="flex flex-row items-center">
         <ListingSummaryAddress
-          number={number}
+          streetNumber={streetNumber}
           street={street}
           suburb={suburb}
-          state={state}
+          province={province}
           postCode={postCode}
           className="mr-6"
         />
-        <ListingStatusPill propertyStatus={propertyStatus} />
+        <ListingStatusPill text={listingStatusText} state={listingStatusPillState} />
       </div>
 
       <ListingSummaryDescription description={summaryDescription} />
@@ -221,24 +227,24 @@ function ListingSummary({
 }
 
 function ListingSummaryAddress({
-  number,
+  streetNumber,
   street,
   suburb,
-  state,
+  province,
   postCode,
   className = "",
 }: {
-  number: string;
+  streetNumber: string;
   street: string;
   suburb: string;
-  state: string;
+  province: string;
   postCode: string;
   className?: string;
 }): React.JSX.Element {
   return (
     <div className={`flex flex-row items-end ${className}`}>
-      <span className="geist-semibold text-[20px] mr-3">{`${number} ${street}`}</span>
-      <span className="geist-regular text-[17px]">{`${suburb}, ${state}, ${postCode}`}</span>
+      <span className="geist-semibold text-[20px] mr-3">{`${streetNumber} ${street}`}</span>
+      <span className="geist-regular text-[17px]">{`${suburb}, ${province}, ${postCode}`}</span>
     </div>
   );
 }
@@ -258,22 +264,17 @@ function ListingSummaryDescription({
 }
 
 function ListingStatusPill({
-  propertyStatus,
+  text,
+  state,
   className = "",
 }: {
-  propertyStatus: PropertyStatus;
+  text: string;
+  state: ListingStatusPillState;
   className?: string;
 }): React.JSX.Element {
-  const text = (() => {
-    switch (propertyStatus) {
-      case PropertyStatus.VACANT:
-        return "Vacant";
-    }
-  })();
-
   const color = (() => {
-    switch (propertyStatus) {
-      case PropertyStatus.VACANT:
+    switch (state) {
+      case ListingStatusPillState.VACANT:
         return "--status-green";
     }
   })();
@@ -287,7 +288,7 @@ function ListingStatusPill({
   );
 }
 
-enum PropertyStatus {
+enum ListingStatusPillState {
   VACANT,
 }
 
