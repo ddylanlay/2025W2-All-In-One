@@ -2,12 +2,17 @@ import React from "react";
 import { ListingFeatures } from "/ui-modules/draft-listing/components/ListingFeatures";
 import { ListingPropertyDetails } from "/ui-modules/draft-listing/components/ListingPropertyDetails";
 import { ImageCarousel } from "/ui-modules/draft-listing/components/ImageCarousel";
-import { ListingStatusPillState, ListingSummary } from "/ui-modules/draft-listing/components/ListingSummary";
+import {
+  ListingStatusPillState,
+  ListingSummary,
+} from "/ui-modules/draft-listing/components/ListingSummary";
 import { ListingNavbar } from "/ui-modules/draft-listing/components/ListingNavbar";
 import { ListingDescription } from "/ui-modules/draft-listing/components/ListingDescription";
+import { InspectionBookingList } from "/ui-modules/draft-listing/components/InspectionBookingList";
 
 // TODO: DraftListingPage is likely the actual listing page as well
 // TODO: Use ui object instead of huge list of props
+// TODO: Improve the naming of props, areas -> propertyArea
 // TODO: Change DraftListingPage to use server data
 
 export function DraftListingPage({
@@ -24,7 +29,13 @@ export function DraftListingPage({
         suburb="Toorak"
         province="VIC"
         postcode="3166"
-        listingFeatures={["Pool", "Gym", "Garage", "Pet friendly", "Washing machine"]}
+        listingFeatures={[
+          "Pool",
+          "Gym",
+          "Garage",
+          "Pet friendly",
+          "Washing machine",
+        ]}
         listingStatusText="Vacant"
         listingStatusPillState={ListingStatusPillState.VACANT}
         summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
@@ -99,12 +110,12 @@ function DraftListingPageContent({
         bedrooms={bedrooms}
         price={price}
       />
-      <ListingFeatures featuresList={listingFeatures} />
+      <ListingFeatures featuresList={listingFeatures} className="w-[300px]" />
+      <InspectionBookingList uiStateList={[{
+        "date": "21st Jan 2025",
+        "startingTime": "11:25pm",
+        "endingTime": "11:55pm"
+      }]}/>
     </div>
   );
 }
-
-
-
-
-

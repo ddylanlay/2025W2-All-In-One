@@ -28,7 +28,7 @@ export function ListingSummary({
   return (
     <div className={`flex flex-col ${className}`}>
       <div className="flex flex-row items-center">
-        <ListingSummaryAddress
+        <Address
           streetNumber={streetNumber}
           street={street}
           suburb={suburb}
@@ -36,15 +36,15 @@ export function ListingSummary({
           postcode={postcode}
           className="mr-6"
         />
-        <ListingStatusPill text={listingStatusText} state={listingStatusPillState} />
+        <StatusPill text={listingStatusText} state={listingStatusPillState} />
       </div>
 
-      <ListingSummaryDescription description={summaryDescription} />
+      <Description description={summaryDescription} />
     </div>
   );
 }
 
-function ListingSummaryAddress({
+function Address({
   streetNumber,
   street,
   suburb,
@@ -67,7 +67,7 @@ function ListingSummaryAddress({
   );
 }
 
-function ListingSummaryDescription({
+function Description({
   description,
   className = "",
 }: {
@@ -81,7 +81,7 @@ function ListingSummaryDescription({
   );
 }
 
-function ListingStatusPill({
+function StatusPill({
   text,
   state,
   className = "",

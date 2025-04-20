@@ -35,7 +35,7 @@ function FeaturesPillList({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-row flex-wrap gap-y-2 w-[300px] ${className}`}>
+    <div className={`flex flex-row flex-wrap gap-y-2 ${className}`}>
       {featuresList.map((feature) => (
         <FeaturesPill key={feature} text={feature} className="mr-2" />
       ))}
