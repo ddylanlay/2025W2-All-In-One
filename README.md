@@ -5,7 +5,7 @@ A web-app to optimise the renting process between tenants/landlord and agents.
 ## Contributors
 
 - Shannon Wallis - swal0059@student.monash.edu | shanwal001@gmail.com
-- Rehan Ali - rali0010@student.monash.edu / ra3702672@gmail.com
+- Rehan Ali - rali0010@student.monash.edu / ra3702672@gmail.com.au
 - Shen Jiang - sjia0047@student.monash.edu / shen.jng1@gmail.com
 - Akash Kamlesh Kapadia - kapadia.akash.k@gmail.com
 - tom macauley - tmac0014@student.monash.edu | thomas123mac@gmail.com
