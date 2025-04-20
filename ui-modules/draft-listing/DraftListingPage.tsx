@@ -20,6 +20,7 @@ export function DraftListingPage({
         postCode="3166"
         summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
         propertyStatus={PropertyStatus.VACANT}
+        propertyDescription="Fake property description"
       />
     </div>
   );
@@ -33,6 +34,7 @@ function DraftListingPageContent({
   postCode,
   summaryDescription,
   propertyStatus,
+  propertyDescription,
   className = "",
 }: {
   number: string;
@@ -42,6 +44,7 @@ function DraftListingPageContent({
   postCode: string;
   summaryDescription: string;
   propertyStatus: PropertyStatus;
+  propertyDescription: string;
   className?: string;
 }): React.JSX.Element {
   return (
@@ -55,6 +58,31 @@ function DraftListingPageContent({
         summaryDescription={summaryDescription}
         propertyStatus={propertyStatus}
       />
+      <ImageCarousel className="mt-6" />
+      <ListingDescription description={propertyDescription} />
+    </div>
+  );
+}
+
+function ImageCarousel({
+  className = "",
+}: {
+  className?: string;
+}): React.JSX.Element {
+  return <div className={`h-[445px] w-[724px] bg-[#EEEEEE] ${className}`}>Image Carousel</div>;
+}
+
+function ListingDescription({
+  description,
+  className=""
+} : {
+  description: string,
+  className?: string
+}): React.JSX.Element {
+  return (
+    <div className={`flex flex-col ${className}`}>
+      <span className="geist-semibold mb-1">Description</span>
+      <span className="geist-regular text-[16px]">{description}</span>
     </div>
   );
 }
