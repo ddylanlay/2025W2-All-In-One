@@ -1,5 +1,6 @@
 import React from "react";
 import { BackButtonIcon } from "/library-modules/theming/icons/BackButtonIcon";
+import { ListingFeatures } from "/ui-modules/draft-listing/components/ListingFeatures";
 
 // TODO: DraftListingPage is likely the actual listing page as well
 // TODO: Use ui object instead of huge list of props
@@ -20,9 +21,10 @@ export function DraftListingPage({
         suburb="Toorak"
         province="VIC"
         postCode="3166"
-        summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
+        listingFeatures={["Pool", "Gym", "Garage", "Pet friendly", "Washing machine"]}
         listingStatusText="Vacant"
         listingStatusPillState={ListingStatusPillState.VACANT}
+        summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
         propertyDescription="Fake property description"
         propertyType="Apartment"
         area="500m²"
@@ -41,9 +43,10 @@ function DraftListingPageContent({
   suburb,
   province,
   postCode,
-  summaryDescription,
+  listingFeatures,
   listingStatusText,
   listingStatusPillState,
+  summaryDescription,
   propertyDescription,
   propertyType,
   area,
@@ -58,9 +61,10 @@ function DraftListingPageContent({
   suburb: string;
   province: string;
   postCode: string;
-  summaryDescription: string;
+  listingFeatures: string[];
   listingStatusText: string;
   listingStatusPillState: ListingStatusPillState;
+  summaryDescription: string;
   propertyDescription: string;
   propertyType: string;
   area: string;
@@ -92,6 +96,7 @@ function DraftListingPageContent({
         bedrooms={bedrooms}
         price={price}
       />
+      <ListingFeatures featuresList={listingFeatures} />
     </div>
   );
 }
