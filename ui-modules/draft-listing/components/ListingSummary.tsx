@@ -1,0 +1,107 @@
+import React from "react";
+
+export enum ListingStatusPillState {
+  VACANT,
+}
+
+export function ListingSummary({
+  streetNumber,
+  street,
+  suburb,
+  province,
+  postcode,
+  summaryDescription,
+  listingStatusText,
+  listingStatusPillState,
+  className = "",
+}: {
+  streetNumber: string;
+  street: string;
+  suburb: string;
+  province: string;
+  postcode: string;
+  summaryDescription: string;
+  listingStatusText: string;
+  listingStatusPillState: ListingStatusPillState;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={`flex flex-col ${className}`}>
+      <div className="flex flex-row items-center">
+        <ListingSummaryAddress
+          streetNumber={streetNumber}
+          street={street}
+          suburb={suburb}
+          province={province}
+          postcode={postcode}
+          className="mr-6"
+        />
+        <ListingStatusPill text={listingStatusText} state={listingStatusPillState} />
+      </div>
+
+      <ListingSummaryDescription description={summaryDescription} />
+    </div>
+  );
+}
+
+function ListingSummaryAddress({
+  streetNumber,
+  street,
+  suburb,
+  province,
+  postcode,
+  className = "",
+}: {
+  streetNumber: string;
+  street: string;
+  suburb: string;
+  province: string;
+  postcode: string;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={`flex flex-row items-end ${className}`}>
+      <span className="geist-semibold text-[20px] mr-3">{`${streetNumber} ${street}`}</span>
+      <span className="geist-regular text-[17px]">{`${suburb}, ${province}, ${postcode}`}</span>
+    </div>
+  );
+}
+
+function ListingSummaryDescription({
+  description,
+  className = "",
+}: {
+  description: string;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <span className={`geist-regular text-(--body-tertiary) ${className}`}>
+      {description}
+    </span>
+  );
+}
+
+function ListingStatusPill({
+  text,
+  state,
+  className = "",
+}: {
+  text: string;
+  state: ListingStatusPillState;
+  className?: string;
+}): React.JSX.Element {
+  const color = (() => {
+    switch (state) {
+      case ListingStatusPillState.VACANT:
+        return "--status-green";
+    }
+  })();
+
+  return (
+    <span
+      className={`px-5 py-0.5 h-min text-[12px] rounded-full bg-(${color}) ${className}`}
+    >
+      {text}
+    </span>
+  );
+}

@@ -9,7 +9,6 @@ export function ListingFeatures({
 }): React.JSX.Element {
   return (
     <div className={className}>
-
       <span className="geist-semibold text-[18px] block mb-2">Features</span>
 
       <div className={`flex flex-row flex-wrap gap-y-2 w-[300px] ${className}`}>
@@ -17,7 +16,7 @@ export function ListingFeatures({
           <ListingFeaturesPill key={feature} text={feature} className="mr-2" />
         ))}
       </div>
-
+      
     </div>
   );
 }

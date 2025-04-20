@@ -1,0 +1,16 @@
+import React from "react";
+
+export function ListingDescription({
+  description,
+  className = "",
+}: {
+  description: string;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={`flex flex-col ${className}`}>
+      <span className="geist-semibold mb-1">Description</span>
+      <span className="geist-regular text-[16px]">{description}</span>
+    </div>
+  );
+}
