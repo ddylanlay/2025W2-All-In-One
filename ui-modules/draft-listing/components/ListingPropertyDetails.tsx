@@ -31,7 +31,7 @@ export function ListingPropertyDetails({
       <PropertyDetailEntry
         label="Price"
         text={price}
-        textColorCssVar="--active-primary"
+        textColorTwClass="text-(--active-primary)"
         className="col-span-full"
       />
     </div>
@@ -41,22 +41,22 @@ export function ListingPropertyDetails({
 function PropertyDetailEntry({
   label,
   text,
-  textColorCssVar,
+  textColorTwClass,
   className = "",
 }: {
   label: string;
   text: string;
-  textColorCssVar?: string;
+  textColorTwClass?: string;
   className?: string;
 }): React.JSX.Element {
-  const textColorClassName = textColorCssVar ? `text-(${textColorCssVar})` : "";
+  const textColor = textColorTwClass ? textColorTwClass : ""
 
   return (
     <div className={`flex flex-col ${className}`}>
       <span className="geist-regular text-[14px] text-(--body-secondary)">
         {label}
       </span>
-      <span className={`geist-medium text-[16px] ${textColorClassName}`}>
+      <span className={`geist-medium text-[16px] ${textColor}`}>
         {text}
       </span>
     </div>

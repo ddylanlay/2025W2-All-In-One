@@ -90,16 +90,16 @@ function ListingStatusPill({
   state: ListingStatusPillState;
   className?: string;
 }): React.JSX.Element {
-  const color = (() => {
+  const bgColorClass = (() => {
     switch (state) {
       case ListingStatusPillState.VACANT:
-        return "--status-green";
+        return "bg-(--status-green)";
     }
   })();
 
   return (
     <span
-      className={`px-5 py-0.5 h-min text-[12px] rounded-full bg-(${color}) ${className}`}
+      className={`px-5 py-0.5 h-min text-[12px] rounded-full ${bgColorClass} ${className}`}
     >
       {text}
     </span>
