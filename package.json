@@ -25,7 +25,10 @@
     "tailwindcss": "^4.0.17"
   },
   "jest": {
-    "moduleDirectories": ["node_modules", "<rootDir>"],
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>"
+    ],
     "moduleNameMapper": {
       "^/(.*)": "<rootDir>/$1",
       "^meteor/(.*)": "<rootDir>/library-modules/meteor-test-stubs/$1"

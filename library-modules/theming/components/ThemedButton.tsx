@@ -1,17 +1,20 @@
 import React from "react";
 
 export function ThemedButton({
-  buttonBgColorTwClass = "bg-(--active-primary)",
+  bgColorClass = "bg-(--active-primary)",
+  onClick,
   children,
   className = "",
 }: {
   children: React.ReactNode;
-  buttonBgColorTwClass?: string;
+  onClick: () => void;
+  bgColorClass?: string;
   className?: string;
 }): React.JSX.Element {
   return (
     <button
-      className={`${buttonBgColorTwClass} px-3 py-1.5 rounded-md cursor-pointer ${className}`}
+      onClick={onClick}
+      className={`${bgColorClass} px-3 py-1.5 rounded-md cursor-pointer ${className}`}
     >
       {children}
     </button>
