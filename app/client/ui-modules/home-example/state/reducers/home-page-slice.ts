@@ -4,7 +4,7 @@ import {
   repoAddNewTask,
   repoGetAllTasks,
 } from "/app/client/library-modules/domain-models/task-example/repositories/task-repository";
-import { RootState } from "../../../../store";
+import { RootState } from "/app/client/store";
 
 const initialState: HomePageUiState = {
   isLoading: true,
