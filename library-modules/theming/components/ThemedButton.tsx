@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * Basic button themed according to PropManager figma designs.
+ */
 export function ThemedButton({
   bgColorClass = "bg-(--active-primary-color)",
   onClick,
