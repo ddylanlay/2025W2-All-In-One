@@ -1,17 +1,17 @@
 import React from "react";
-import { PropertyFeatures } from "/ui-modules/draft-listing/components/PropertyFeatures";
-import { ListingPropertyDetails } from "/ui-modules/draft-listing/components/ListingPropertyDetails";
-import { ImageCarousel } from "/ui-modules/draft-listing/components/ImageCarousel";
+import { PropertyFeatures } from "/ui-modules/property-listing/components/PropertyFeatures";
+import { ListingPropertyDetails } from "/ui-modules/property-listing/components/ListingPropertyDetails";
+import { ImageCarousel } from "/ui-modules/property-listing/components/ImageCarousel";
 import {
   ListingStatusPillState,
   ListingSummary,
-} from "/ui-modules/draft-listing/components/ListingSummary";
-import { ListingNavbar } from "/ui-modules/draft-listing/components/ListingNavbar";
-import { ListingDescription } from "/ui-modules/draft-listing/components/ListingDescription";
+} from "/ui-modules/property-listing/components/ListingSummary";
+import { ListingNavbar } from "/ui-modules/property-listing/components/ListingNavbar";
+import { ListingDescription } from "/ui-modules/property-listing/components/ListingDescription";
 import {
   InspectionBookingList,
   InspectionBookingListUiState,
-} from "/ui-modules/draft-listing/components/InspectionBookingList";
+} from "/ui-modules/property-listing/components/InspectionBookingList";
 
 // TODO: DraftListingPage is likely the actual listing page as well
 // TODO: Use ui object instead of huge list of props

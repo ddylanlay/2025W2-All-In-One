@@ -5,7 +5,7 @@ import { ExampleHomePage } from "/ui-modules/home-example/ExampleHomePage";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "/app/store";
-import { DraftListingPage } from "/ui-modules/draft-listing/DraftListingPage";
+import { DraftListingPage } from "/ui-modules/property-listing/DraftListingPage";
 import { DefaultTheme } from "/library-modules/theming/themes/DefaultTheme";
 
 Meteor.startup(initialiseReactRoot);
