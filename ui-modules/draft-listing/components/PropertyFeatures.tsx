@@ -52,7 +52,7 @@ function FeaturesPill({
 }): React.JSX.Element {
   return (
     <span
-      className={`px-2 py-0.5 h-min text-[12px] bg-(--body-quaternary) rounded-full ${className}`}
+      className={`px-2 py-0.5 h-min text-[12px] bg-(--body-quaternary-color) rounded-full ${className}`}
     >
       {text}
     </span>

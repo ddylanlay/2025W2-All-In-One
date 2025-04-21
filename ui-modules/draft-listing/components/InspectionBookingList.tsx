@@ -20,7 +20,7 @@ export function InspectionBookingList({
 }): React.JSX.Element {
   return (
     <div
-      className={`flex flex-col w-[520px] border-[1.5px] border-(--divider) rounded-lg py-3 px-4 ${className}`}
+      className={`flex flex-col w-[520px] border-[1.5px] border-(--divider-color) rounded-lg py-3 px-4 ${className}`}
     >
       {bookingUiStateList.map((state, i) => (
         <BookingEntry
