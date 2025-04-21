@@ -1,5 +1,5 @@
 import React from "react";
-import { GuestLandingPageUiState } from "../guest-landing-page/state/GuestLandingPageUiState";
+import { GuestLandingPageUiState } from "./state/GuestLandingPageUiState";
 import { Link } from "react-router";
 import Ripple from "./animations/Ripple";
 import { selectGuestLandingPageUiState } from "./state/reducers/guest-landing-page-slice";
@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { SideNavBar } from "../navigation-bars/side-nav-bars/SideNavbar";
 import { TopNavbar } from "../navigation-bars/TopNavbar";
 
-import { Button } from "../../@/components/ui/button";
-import { Input } from "../../@/components/ui/input";
+import { Button } from "../../../../@/components/ui/button";
+import { Input } from "../../../../@/components/ui/input";
 import { agentLinks } from "../navigation-bars/side-nav-bars/AgentSideNav";
 export function GuestLandingPage(): React.JSX.Element {
   const GuestLandingPageUiState: GuestLandingPageUiState = useSelector(

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { PropManagerLogoIcon } from "../theming/logo/PropManagerLogoIcon";
 import { PropManagerLogoText } from "../theming/logo/PropManagerLogoText";
-import { Button } from "../../@/components/ui/button";
+import { Button } from "../../../../@/components/ui/button";
 
 interface TopNavbarProps {
   onSideBarOpened: React.Dispatch<React.SetStateAction<boolean>>;

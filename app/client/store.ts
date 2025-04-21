@@ -1,6 +1,7 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import { homePageSlice } from "./client/ui-modules/home-example/state/reducers/home-page-slice";
-import { guestLandingPageSlice } from "./client/ui-modules/guest-landing-page/state/reducers/guest-landing-page-slice";
+
+import { homePageSlice } from "./ui-modules/home-example/state/reducers/home-page-slice";
+import { guestLandingPageSlice } from "./ui-modules/guest-landing-page/state/reducers/guest-landing-page-slice";
 
 export const store = configureStore({
   reducer: {

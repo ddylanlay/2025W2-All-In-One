@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../../@/components/ui/button";
+import { Button } from "../../../../../@/components/ui/button";
 import { EscapeIcon } from "../../theming/Icons/EscapeIcon";
 
 interface SidebarContainerProps {
@@ -7,7 +7,10 @@ interface SidebarContainerProps {
   children: React.ReactNode;
 }
 
-export const SidebarContainer = ({ isOpen, children }: SidebarContainerProps) => (
+export const SidebarContainer = ({
+  isOpen,
+  children,
+}: SidebarContainerProps) => (
   <div
     className={`fixed top-0 left-0 h-screen w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
       isOpen ? "translate-x-0" : "-translate-x-full"
