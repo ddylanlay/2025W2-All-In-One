@@ -75,7 +75,7 @@ function Description({
   className?: string;
 }): React.JSX.Element {
   return (
-    <span className={`geist-regular text-(--body-tertiary) ${className}`}>
+    <span className={`geist-regular text-(--body-tertiary-color) ${className}`}>
       {description}
     </span>
   );
@@ -93,7 +93,7 @@ function StatusPill({
   const bgColorClass = (() => {
     switch (state) {
       case ListingStatusPillState.VACANT:
-        return "bg-(--status-green)";
+        return "bg-(--status-green-color)";
     }
   })();
 

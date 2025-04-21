@@ -1,9 +1,9 @@
 
 :root {
-  --body-secondary: #6b7280;
-  --body-tertiary: #979797;
-  --body-quaternary: #f4f4F5;
-  --active-primary: #3b82f6;
-  --status-green: #8ee1ad;
-  --divider: #ebebeb
+  --body-secondary-color: #6b7280;
+  --body-tertiary-color: #979797;
+  --body-quaternary-color: #f4f4F5;
+  --active-primary-color: #3b82f6;
+  --status-green-color: #8ee1ad;
+  --divider-color: #ebebeb
 } 

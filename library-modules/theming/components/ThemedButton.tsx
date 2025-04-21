@@ -1,7 +1,7 @@
 import React from "react";
 
 export function ThemedButton({
-  bgColorClass = "bg-(--active-primary)",
+  bgColorClass = "bg-(--active-primary-color)",
   onClick,
   children,
   className = "",
