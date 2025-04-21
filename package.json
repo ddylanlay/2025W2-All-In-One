@@ -38,8 +38,7 @@
     "mainModule": {
       "client": "app/client/main.tsx",
       "server": "app/server/main.ts"
-    },
-    "testModule": "app/tests/main.js"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",

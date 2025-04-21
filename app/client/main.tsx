@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, createRoot } from "react-dom/client";
 import { Meteor } from "meteor/meteor";
-import { ExampleHomePage } from "/ui-modules/home-example/ExampleHomePage";
+import { ExampleHomePage } from "./ui-modules/home-example/ExampleHomePage";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { Provider } from "react-redux";
-import { store } from "/app/store";
-import { DraftListingPage } from "/ui-modules/property-listing/DraftListingPage";
-import { DefaultTheme } from "/ui-modules/theming/themes/DefaultTheme";
+import { store } from "./store";
+import { DraftListingPage } from "./ui-modules/property-listing/DraftListingPage";
+import { DefaultTheme } from "./ui-modules/theming/themes/DefaultTheme";
 
 Meteor.startup(initialiseReactRoot);
 
