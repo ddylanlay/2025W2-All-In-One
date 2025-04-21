@@ -1,16 +1,19 @@
 import React from "react";
 import { BackButtonIcon } from "/library-modules/theming/icons/BackButtonIcon";
+import { IconButton } from "/library-modules/theming/components/IconButton";
 
 export function ListingNavbar({
   headingText,
+  onBack,
   className = "",
 }: {
   headingText: string;
+  onBack: () => void;
   className?: string;
 }): React.JSX.Element {
   return (
     <div className={`flex flex-row items-center ${className}`}>
-      <BackButtonIcon className="mr-3" />
+      <IconButton icon={<BackButtonIcon />} onClick={onBack} className="mr-3" />
       <NavbarHeading text={headingText} />
     </div>
   );

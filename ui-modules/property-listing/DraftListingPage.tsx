@@ -22,7 +22,12 @@ export function DraftListingPage({
 }): React.JSX.Element {
   return (
     <div className={`flex flex-col ${className}`}>
-      <ListingNavbar headingText="86 Fury Lane - Draft Property Listing" />
+      <ListingNavbar
+        headingText="86 Fury Lane - Draft Property Listing"
+        onBack={() => {
+          console.log("back pressed");
+        }}
+      />
       <DraftListingPageContent
         streetNumber="86"
         street="Fury Lane"
@@ -63,7 +68,9 @@ export function DraftListingPage({
           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
           "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
         ]}
-        onBook={() => {}}
+        onBook={(index: number) => {
+          console.log(`booking button ${index} pressed`);
+        }}
       />
     </div>
   );
