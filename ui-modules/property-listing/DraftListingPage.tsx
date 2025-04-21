@@ -13,11 +13,9 @@ import {
   InspectionBookingListUiState,
 } from "/ui-modules/property-listing/components/InspectionBookingList";
 
-// TODO: DraftListingPage is likely the actual listing page as well
-// TODO: Use ui object instead of huge list of props
 // TODO: Improve the naming of props, areas -> propertyArea
-// TODO: Add -color prefix to colors in colors.css
 // TODO: Change DraftListingPage to use server data
+// TODO: Image carousel needs the arrows (animations can come later)
 
 export function DraftListingPage({
   className = "",
@@ -57,6 +55,12 @@ export function DraftListingPage({
             endingTime: "1:50pm",
           },
         ]}
+        imageUrls={
+          [
+            "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
+            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+          ]
+        }
         area="500m²"
         bathrooms="2"
         parking="2"
@@ -81,6 +85,7 @@ function DraftListingPageContent({
   propertyFeatures,
   propertyType,
   inspectionBookingUiStateList,
+  imageUrls,
   area,
   bathrooms,
   parking,
@@ -101,6 +106,7 @@ function DraftListingPageContent({
   propertyFeatures: string[];
   propertyType: string;
   inspectionBookingUiStateList: InspectionBookingListUiState[];
+  imageUrls: string[]
   area: string;
   bathrooms: string;
   parking: string;
@@ -121,7 +127,7 @@ function DraftListingPageContent({
         listingStatusText={listingStatusText}
         listingStatusPillState={listingStatusPillState}
       />
-      <ImageCarousel />
+      <ImageCarousel imageUrls={imageUrls} />
       <ListingDescription description={propertyDescription} />
       <ListingPropertyDetails
         propertyType={propertyType}
