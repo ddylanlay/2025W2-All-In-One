@@ -41,6 +41,11 @@ export function DraftListingPage({
           "Washing machine",
         ]}
         propertyType="Apartment"
+        propertyLandArea="500m²"
+        propertyBathrooms="2"
+        propertyParkingSpaces="2"
+        propertyBedrooms="4"
+        propertyPrice="$1500/mth"
         inspectionBookingUiStateList={[
           {
             date: "21st Jan 2025",
@@ -53,16 +58,11 @@ export function DraftListingPage({
             endingTime: "1:50pm",
           },
         ]}
-        imageUrls={[
+        listingImageUrls={[
           "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
           "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
         ]}
-        area="500m²"
-        bathrooms="2"
-        parking="2"
-        bedrooms="4"
-        price="$1500/mth"
         onBook={() => {}}
       />
     </div>
@@ -81,13 +81,13 @@ function DraftListingPageContent({
   propertyDescription,
   propertyFeatures,
   propertyType,
+  propertyLandArea,
+  propertyBathrooms,
+  propertyParkingSpaces,
+  propertyBedrooms,
+  propertyPrice,
   inspectionBookingUiStateList,
-  imageUrls,
-  area,
-  bathrooms,
-  parking,
-  bedrooms,
-  price,
+  listingImageUrls,
   onBook,
   className = "",
 }: {
@@ -102,13 +102,13 @@ function DraftListingPageContent({
   propertyDescription: string;
   propertyFeatures: string[];
   propertyType: string;
+  propertyLandArea: string;
+  propertyBathrooms: string;
+  propertyParkingSpaces: string;
+  propertyBedrooms: string;
+  propertyPrice: string;
   inspectionBookingUiStateList: InspectionBookingListUiState[];
-  imageUrls: string[];
-  area: string;
-  bathrooms: string;
-  parking: string;
-  bedrooms: string;
-  price: string;
+  listingImageUrls: string[];
   onBook: (index: number) => void;
   className?: string;
 }): React.JSX.Element {
@@ -125,18 +125,18 @@ function DraftListingPageContent({
         listingStatusPillState={listingStatusPillState}
       />
       <ImageCarousel
-        imageUrls={imageUrls}
+        imageUrls={listingImageUrls}
         leftArrowIcon={<LeftCircularArrowIcon />}
         rightArrowIcon={<RightCircularArrowIcon />}
       />
       <ListingDescription description={propertyDescription} />
       <ListingPropertyDetails
         propertyType={propertyType}
-        area={area}
-        bathrooms={bathrooms}
-        parking={parking}
-        bedrooms={bedrooms}
-        price={price}
+        area={propertyLandArea}
+        bathrooms={propertyBathrooms}
+        parking={propertyParkingSpaces}
+        bedrooms={propertyBedrooms}
+        price={propertyPrice}
       />
       <PropertyFeatures featuresList={propertyFeatures} className="w-[300px]" />
       <InspectionBookingList
