@@ -31,7 +31,7 @@
     ],
     "moduleNameMapper": {
       "^/(.*)": "<rootDir>/$1",
-      "^meteor/(.*)": "<rootDir>/library-modules/meteor-test-stubs/$1"
+      "^meteor/(.*)": "<rootDir>/app/client/library-modules/meteor-test-stubs/$1"
     }
   },
   "meteor": {
