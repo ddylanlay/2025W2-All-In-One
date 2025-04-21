@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
-import { PropManagerLogoIcon } from "../icons/PropManagerLogoIcon";
-import { NavBarLink } from "./NavBarLink";
+import { PropManagerLogoIcon } from "../theming/logo/PropManagerLogoIcon";
+import { PropManagerLogoText } from "../theming/logo/PropManagerLogoText";
+import { NavBarLink } from "../navigation-bars/NavBarLink";
 
 export function BottomNavbar(): React.JSX.Element {
   return (
@@ -11,8 +12,7 @@ export function BottomNavbar(): React.JSX.Element {
         <Link to="/">
           <div className="flex items-center gap-2">
             <PropManagerLogoIcon variant="light" />
-            <span className="geist-h1">Prop Manager</span>{" "}
-            {/* Applying Geist Header 1 */}
+            <PropManagerLogoText />{" "}
           </div>
         </Link>
 

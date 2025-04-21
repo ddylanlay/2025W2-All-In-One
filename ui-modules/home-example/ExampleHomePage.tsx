@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Task } from "./components/Task";
 import { AddTaskButton } from "./components/AddTaskButton";
 import { HomePageUiState } from "./state/HomePageUiState";
-import PrimaryButton from "../theming/PrimaryButton";
+import { Button } from "../../@/components/ui/button";
 import { Link } from "react-router";
 import Ripple from "./Ripple";
 import {
@@ -12,9 +12,9 @@ import {
   updateTextboxValue,
 } from "./state/reducers/home-page-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "/app/store";
-import { SideNavBar } from "../../ui-modules/shared/navigation-bars/SideNavbar";
-import { TopNavbar } from "../../ui-modules/shared/navigation-bars/Navbar";
+import { AppDispatch } from "app/store";
+import { SideNavBar } from "../navigation-bars/SideNavbar";
+import { TopNavbar } from "../navigation-bars/Navbar";
 
 export function ExampleHomePage(): React.JSX.Element {
   const dispatch = useDispatch<AppDispatch>();
@@ -57,13 +57,13 @@ function ExampleHomePageBase({
   } else {
     return (
       <div className="p-5">
-        {/* TopNavbar: Pass `setSidebarOpen` prop to control sidebar state */}
         <TopNavbar onSideBarOpened={onSideBarOpened} />
 
         {/* Sidebar & Backdrop */}
         <SideNavBar
           isOpen={isSidebarOpen}
           onClose={() => onSideBarOpened(false)}
+          role="agent"
         />
         <div className="relative flex flex-col items-center justify-center min-h-[80vh] bg-white overflow-hidden px-4">
           {/* Animated Ripple Background */}
@@ -88,7 +88,7 @@ function ExampleHomePageBase({
               />
 
               <Link to="/signup">
-                <PrimaryButton variant="black">Search</PrimaryButton>
+                <Button>Search</Button>
               </Link>
             </div>
           </div>

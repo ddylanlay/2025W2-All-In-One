@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "/app/store";
-// Define the structure of AboutPageUiState
-export type AboutPageUiState = {
-  isLoading: boolean;
-  agentDescription: string;
-  tenantDescription: string;
-  landlordDescription: string;
-};
+import { RootState } from "app/store"; 
+import { AboutPageUiState } from "../AboutPageUiState";
 
 const initialState: AboutPageUiState = {
   isLoading: false,
@@ -40,6 +34,7 @@ const aboutPageSlice = createSlice({
 export const { setLoading, setDescriptions } = aboutPageSlice.actions;
 
 // Selector to retrieve the AboutPageUiState from the store
-export const selectAboutPageUiState = (state: RootState): AboutPageUiState => state.aboutPage;
+export const selectAboutPageUiState = (state: RootState): AboutPageUiState =>
+  state.aboutPage;
 
 export default aboutPageSlice.reducer;

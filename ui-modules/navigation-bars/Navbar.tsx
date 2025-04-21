@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
-import { PropManagerLogoIcon } from "../icons/PropManagerLogoIcon";
-import PrimaryButton from "../../theming/PrimaryButton";
+import { PropManagerLogoIcon } from "../theming/logo/PropManagerLogoIcon";
+import { PropManagerLogoText } from "../theming/logo/PropManagerLogoText";
+import { Button } from "../../@/components/ui/button";
 
 interface TopNavbarProps {
   onSideBarOpened: React.Dispatch<React.SetStateAction<boolean>>;
@@ -19,16 +20,16 @@ export function TopNavbar({
           className="flex items-center gap-2 cursor-pointer"
         >
           <PropManagerLogoIcon variant="dark" />
-          <span className="geist-h1">PropManager</span>
+          <PropManagerLogoText />
         </div>
 
         {/* Right-aligned buttons */}
         <div className="flex gap-6 ml-auto">
           <Link to="/login">
-            <PrimaryButton variant="black">Login</PrimaryButton>
+            <Button>Login</Button>
           </Link>
           <Link to="/signup">
-            <PrimaryButton variant="white">Sign Up!</PrimaryButton>
+            <Button variant="outline">Sign Up</Button>
           </Link>
         </div>
       </div>
