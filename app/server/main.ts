@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
-import { TasksCollection } from "/library-modules/database/example-tasks/TasksCollection";
-import "/library-modules/apis/example-tasks/methods/task-methods";
+import { TasksCollection } from "./database/example-tasks/TasksCollection";
+import "./methods/example-tasks/task-methods";
 
 Meteor.startup(tempSeedFunction);
 
