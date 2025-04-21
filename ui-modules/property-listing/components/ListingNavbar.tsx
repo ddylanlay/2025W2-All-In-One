@@ -1,6 +1,6 @@
 import React from "react";
-import { BackButtonIcon } from "/library-modules/theming/icons/BackButtonIcon";
-import { IconButton } from "/library-modules/theming/components/IconButton";
+import { BackButtonIcon } from "/ui-modules/theming/icons/BackButtonIcon";
+import { IconButton } from "/ui-modules/theming/components/IconButton";
 
 export function ListingNavbar({
   headingText,

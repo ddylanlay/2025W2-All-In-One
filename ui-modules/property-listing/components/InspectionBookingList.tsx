@@ -1,7 +1,7 @@
 import React from "react";
-import { ThemedButton } from "/library-modules/theming/components/ThemedButton";
-import { Divider } from "/library-modules/theming/components/Divider";
-import { CalendarIcon } from "/library-modules/theming/icons/CalendarIcon";
+import { ThemedButton } from "/ui-modules/theming/components/ThemedButton";
+import { Divider } from "/ui-modules/theming/components/Divider";
+import { CalendarIcon } from "/ui-modules/theming/icons/CalendarIcon";
 
 export type InspectionBookingListUiState = {
   date: string;

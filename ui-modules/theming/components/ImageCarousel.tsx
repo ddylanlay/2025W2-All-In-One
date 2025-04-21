@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useImagePreload } from "/ui-modules/hooks/useImagePreload";
-import { IconButton } from "/library-modules/theming/components/IconButton";
+import { IconButton } from "./IconButton";
 
 export function ImageCarousel({
   imageUrls,

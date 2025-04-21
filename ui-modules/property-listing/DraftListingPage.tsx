@@ -11,9 +11,9 @@ import {
   InspectionBookingList,
   InspectionBookingListUiState,
 } from "/ui-modules/property-listing/components/InspectionBookingList";
-import { LeftCircularArrowIcon } from "/library-modules/theming/icons/LeftCircularArrowIcon";
-import { RightCircularArrowIcon } from "/library-modules/theming/icons/RightCircularArrowIcon";
-import { ImageCarousel } from "/library-modules/theming/components/ImageCarousel";
+import { LeftCircularArrowIcon } from "/ui-modules/theming/icons/LeftCircularArrowIcon";
+import { RightCircularArrowIcon } from "/ui-modules/theming/icons/RightCircularArrowIcon";
+import { ImageCarousel } from "/ui-modules/theming/components/ImageCarousel";
 
 export function DraftListingPage({
   className = "",
