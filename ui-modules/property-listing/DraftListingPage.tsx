@@ -1,7 +1,6 @@
 import React from "react";
 import { PropertyFeatures } from "/ui-modules/property-listing/components/PropertyFeatures";
 import { ListingPropertyDetails } from "/ui-modules/property-listing/components/ListingPropertyDetails";
-import { ImageCarousel } from "/ui-modules/property-listing/components/ImageCarousel";
 import {
   ListingStatusPillState,
   ListingSummary,
@@ -12,10 +11,9 @@ import {
   InspectionBookingList,
   InspectionBookingListUiState,
 } from "/ui-modules/property-listing/components/InspectionBookingList";
-
-// TODO: Improve the naming of props, areas -> propertyArea
-// TODO: Change DraftListingPage to use server data
-// TODO: Image carousel needs the arrows (animations can come later)
+import { LeftCircularArrowIcon } from "/library-modules/theming/icons/LeftCircularArrowIcon";
+import { RightCircularArrowIcon } from "/library-modules/theming/icons/RightCircularArrowIcon";
+import { ImageCarousel } from "/library-modules/theming/components/ImageCarousel";
 
 export function DraftListingPage({
   className = "",
@@ -55,12 +53,11 @@ export function DraftListingPage({
             endingTime: "1:50pm",
           },
         ]}
-        imageUrls={
-          [
-            "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
-            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-          ]
-        }
+        imageUrls={[
+          "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
+          "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+          "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+        ]}
         area="500m²"
         bathrooms="2"
         parking="2"
@@ -106,7 +103,7 @@ function DraftListingPageContent({
   propertyFeatures: string[];
   propertyType: string;
   inspectionBookingUiStateList: InspectionBookingListUiState[];
-  imageUrls: string[]
+  imageUrls: string[];
   area: string;
   bathrooms: string;
   parking: string;
@@ -127,7 +124,11 @@ function DraftListingPageContent({
         listingStatusText={listingStatusText}
         listingStatusPillState={listingStatusPillState}
       />
-      <ImageCarousel imageUrls={imageUrls} />
+      <ImageCarousel
+        imageUrls={imageUrls}
+        leftArrowIcon={<LeftCircularArrowIcon />}
+        rightArrowIcon={<RightCircularArrowIcon />}
+      />
       <ListingDescription description={propertyDescription} />
       <ListingPropertyDetails
         propertyType={propertyType}
