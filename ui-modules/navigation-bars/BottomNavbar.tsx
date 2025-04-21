@@ -2,21 +2,19 @@ import React from "react";
 import { Link } from "react-router";
 import { PropManagerLogoIcon } from "../theming/logo/PropManagerLogoIcon";
 import { PropManagerLogoText } from "../theming/logo/PropManagerLogoText";
-import { NavBarLink } from "../navigation-bars/NavBarLink";
+import { NavBarLink } from "./side-nav-bars/NavBarLink";
 
 export function BottomNavbar(): React.JSX.Element {
   return (
     <footer className="bg-[#111827] text-white py-4 mt-8">
       <div className="flex justify-between items-center px-6">
-        {/* Left-aligned logo */}
         <Link to="/">
           <div className="flex items-center gap-2">
             <PropManagerLogoIcon variant="light" />
-            <PropManagerLogoText />{" "}
+            <PropManagerLogoText className="white-text" />
           </div>
         </Link>
 
-        {/* Right-aligned links */}
         <div className="flex gap-6 ml-auto">
           <NavBarLink to="/about">About</NavBarLink>
           <NavBarLink to="/contact">Contact</NavBarLink>
@@ -25,7 +23,6 @@ export function BottomNavbar(): React.JSX.Element {
         </div>
       </div>
 
-      {/* Centered copyright text */}
       <div className="text-center mt-4">
         <p className="geist-body">© 2025 PropManager. All rights reserved.</p>
       </div>

@@ -1,5 +1,15 @@
 import React from "react";
 
-export function PropManagerLogoText(): React.JSX.Element {
-  return <span className="geist-h1">Prop Manager</span>;
+interface PropManagerLogoTextProps {
+  className?: string;
+}
+
+export function PropManagerLogoText({
+  className,
+}: PropManagerLogoTextProps): React.JSX.Element {
+  return (
+    <span className={`geist-semibold text-[18px] ${className} `}>
+      PropManager
+    </span>
+  );
 }

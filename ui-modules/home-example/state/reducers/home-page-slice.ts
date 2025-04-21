@@ -1,10 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HomePageUiState } from "/ui-modules/home-example/state/HomePageUiState";
-import {
-  repoAddNewTask,
-  repoGetAllTasks,
-} from "/library-modules/domain-models/task-example/repositories/task-repository";
-import { RootState } from "/app/store";
+import { HomePageUiState } from "../HomePageUiState";
+import { repoAddNewTask } from "../../../../library-modules/domain-models/task-example/repositories/task-repository";
+import { repoGetAllTasks } from "../../../../library-modules/domain-models/task-example/repositories/task-repository";
+import { RootState } from "@/app/store";
 
 const initialState: HomePageUiState = {
   isLoading: true,
@@ -53,6 +51,7 @@ export const addNewTask = createAsyncThunk(
 );
 
 export const { updateTextboxValue } = homePageSlice.actions;
-export const selectHomePageUiState = (state: RootState) => state.homePage
+export const selectHomePageUiState = (state: RootState) =>
+  state.exampleHomePage;
 
 export default homePageSlice.reducer;
