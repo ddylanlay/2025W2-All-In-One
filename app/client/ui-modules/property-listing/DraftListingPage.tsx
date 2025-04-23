@@ -16,6 +16,7 @@ import {
 } from "/app/client/ui-modules/property-listing/components/PropertyInspections";
 import { ApplyButton } from "/app/client/ui-modules/property-listing/components/ApplyButton";
 import { ContactAgentButton } from "/app/client/ui-modules/property-listing/components/ContactAgentButton";
+import { ListingStatusPill, ListingStatusPillVariant } from "/app/client/ui-modules/property-listing/components/ListingStatusPill";
 
 export function DraftListingPage({
   className = "",
@@ -70,6 +71,8 @@ export function DraftListingPage({
           "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
           "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
         ]}
+        listingStatusText="DRAFT LISTING"
+        listingStatusPillVariant={ListingStatusPillVariant.DRAFT}
         onBook={(index: number) => {
           console.log(`booking button ${index} pressed`);
         }}
@@ -101,6 +104,8 @@ function DraftListingPageContent({
   propertyPrice,
   inspectionBookingUiStateList,
   listingImageUrls,
+  listingStatusText,
+  listingStatusPillVariant,
   onBook,
   onApply,
   onContactAgent,
@@ -124,6 +129,8 @@ function DraftListingPageContent({
   propertyPrice: string;
   inspectionBookingUiStateList: InspectionBookingListUiState[];
   listingImageUrls: string[];
+  listingStatusText: string;
+  listingStatusPillVariant: ListingStatusPillVariant
   onBook: (index: number) => void;
   onApply: () => void;
   onContactAgent: () => void;
@@ -162,6 +169,7 @@ function DraftListingPageContent({
       />
       <ApplyButton onClick={onApply} />
       <ContactAgentButton onClick={onContactAgent} />
+      <ListingStatusPill text={listingStatusText} variant={listingStatusPillVariant}/>
     </div>
   );
 }
