@@ -2,7 +2,7 @@ import React from "react";
 import { PropertyFeatures } from "./components/PropertyFeatures";
 import { ListingPropertyDetails } from "./components/ListingPropertyDetails";
 import {
-  PropertyStatusPillState,
+  PropertyStatusPillVariant,
   ListingSummary,
 } from "./components/ListingSummary";
 import { ListingNavbar } from "./components/ListingNavbar";
@@ -39,7 +39,7 @@ export function DraftListingPage({
         postcode="3166"
         summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
         propertyStatusText="Vacant"
-        propertyStatusPillState={PropertyStatusPillState.VACANT}
+        propertyStatusPillVariant={PropertyStatusPillVariant.VACANT}
         propertyDescription="Fake property description"
         propertyFeatures={[
           "Pool",
@@ -93,7 +93,7 @@ function DraftListingPageContent({
   postcode,
   summaryDescription,
   propertyStatusText,
-  propertyStatusPillState,
+  propertyStatusPillVariant,
   propertyDescription,
   propertyFeatures,
   propertyType,
@@ -118,7 +118,7 @@ function DraftListingPageContent({
   postcode: string;
   summaryDescription: string;
   propertyStatusText: string;
-  propertyStatusPillState: PropertyStatusPillState;
+  propertyStatusPillVariant: PropertyStatusPillVariant;
   propertyDescription: string;
   propertyFeatures: string[];
   propertyType: string;
@@ -146,7 +146,7 @@ function DraftListingPageContent({
         postcode={postcode}
         summaryDescription={summaryDescription}
         propertyStatusText={propertyStatusText}
-        propertyStatusPillState={propertyStatusPillState}
+        propertyStatusPillVariant={propertyStatusPillVariant}
       />
       <ImageCarousel
         imageUrls={listingImageUrls}

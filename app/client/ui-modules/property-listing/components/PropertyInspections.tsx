@@ -1,7 +1,7 @@
 import React from "react";
 import {
   ThemedButton,
-  ThemedButtonVariants,
+  ThemedButtonVariant,
 } from "../../theming/components/ThemedButton";
 import { Divider } from "../../theming/components/Divider";
 import { CalendarIcon } from "../../theming/icons/CalendarIcon";
@@ -124,7 +124,7 @@ function BookingButton({
 }): React.JSX.Element {
   return (
     <ThemedButton
-      variant={ThemedButtonVariants.TERTIARY}
+      variant={ThemedButtonVariant.TERTIARY}
       onClick={() => {
         onClick(index);
       }}
