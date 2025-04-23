@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router";
-import { SidebarContainer } from "./SidebarContainer";
-import { SidebarHeader } from "./SidebarContainer";
-import { SidebarContent } from "./SidebarContainer";
+import { SidebarContainer } from "./components/SidebarContainer";
+import { SidebarHeader } from "./components/SidebarContainer";
+import { SidebarContent } from "./components/SidebarContainer";
 
-import { NavLinkItem } from "./NavBarLink";
-import { NavBarLinks } from "./NavBarLink";
+import { NavLinkItem } from "./components/NavBarLink";
+import { NavBarLinks } from "./components/NavBarLink";
 
 interface SideNavBarProps {
   isOpen: boolean;
