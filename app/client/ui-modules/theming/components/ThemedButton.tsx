@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export enum ThemedButtonVariants {
+export enum ThemedButtonVariant {
   PRIMARY,
   SECONDARY,
   TERTIARY,
@@ -17,15 +17,15 @@ export function ThemedButton({
   children,
   className = "",
 }: {
-  variant: ThemedButtonVariants;
-  children: React.ReactNode
+  variant: ThemedButtonVariant;
   onClick: () => void;
+  children: React.ReactNode
   className?: string;
 }): React.JSX.Element {
-  const variantStyling: { [key in ThemedButtonVariants]: string } = {
-    [ThemedButtonVariants.PRIMARY]: "bg-(--button-black) text-white",
-    [ThemedButtonVariants.SECONDARY]: "border border-(--divider-color)",
-    [ThemedButtonVariants.TERTIARY]: "bg-(--button-blue) text-white",
+  const variantStyling: { [key in ThemedButtonVariant]: string } = {
+    [ThemedButtonVariant.PRIMARY]: "bg-(--button-black-color) text-white",
+    [ThemedButtonVariant.SECONDARY]: "border border-(--divider-color)",
+    [ThemedButtonVariant.TERTIARY]: "bg-(--button-blue-color) text-white",
   };
 
   return (

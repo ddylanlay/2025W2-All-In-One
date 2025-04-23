@@ -1,7 +1,7 @@
 import React from "react";
 import {
   ThemedButton,
-  ThemedButtonVariants,
+  ThemedButtonVariant,
 } from "/app/client/ui-modules/theming/components/ThemedButton";
 import { twMerge } from "tailwind-merge";
 
@@ -14,7 +14,7 @@ export function ContactAgentButton({
 }): React.JSX.Element {
   return (
     <ThemedButton
-      variant={ThemedButtonVariants.PRIMARY}
+      variant={ThemedButtonVariant.PRIMARY}
       onClick={onClick}
       className={twMerge("w-[128px]", className)}
     >

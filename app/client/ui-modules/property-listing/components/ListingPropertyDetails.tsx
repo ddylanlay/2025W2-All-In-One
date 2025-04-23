@@ -26,7 +26,7 @@ export function ListingPropertyDetails({
       <PropertyDetailEntry
         label="Price"
         text={price}
-        textColorClass="text-(--button-blue)"
+        textColorClass="text-(--button-blue-color)"
       />
       
       <PropertyDetailEntry label="Bedrooms" text={bedrooms} />
