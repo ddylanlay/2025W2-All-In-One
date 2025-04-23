@@ -71,12 +71,12 @@ function ImageCarouselButtons({
       <IconButton
         icon={leftArrowIcon}
         onClick={onLeftArrowClicked}
-        className={`ml-2 mr-auto ${shouldDisplayLeftArrow ? "" : "invisible"} `}
+        className={`ml-3 mr-auto ${shouldDisplayLeftArrow ? "" : "invisible"} `}
       />
       <IconButton
         icon={rightArrowIcon}
         onClick={onRightArrowClicked}
-        className={`mr-2 ${shouldDisplayRightArrow ? "" : "invisible"}`}
+        className={`mr-3 ${shouldDisplayRightArrow ? "" : "invisible"}`}
       />
     </div>
   );
