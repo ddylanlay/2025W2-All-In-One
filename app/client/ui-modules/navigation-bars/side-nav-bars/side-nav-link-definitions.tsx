@@ -2,10 +2,11 @@ import React from "react";
 import { MultipleHousesIcon } from "../../theming/icons/MultipleHousesIcon";
 import { CalendarIcon } from "../../theming/icons/CalendarIcon";
 
+// Define the type for navigation links
 export interface NavLinkItem {
   to: string;
   label: string;
-  icon?: () => React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 export const agentLinks: NavLinkItem[] = [
@@ -13,17 +14,17 @@ export const agentLinks: NavLinkItem[] = [
   {
     to: "/properties",
     label: "Managed Properties",
-    icon: () => <MultipleHousesIcon />,
+    icon: <MultipleHousesIcon variant="light" />,
   },
   {
     to: "/calendar",
     label: "Calendar",
-    icon: () => <CalendarIcon />,
+    icon: <CalendarIcon />,
   },
   {
     to: "/tasks",
     label: "Tasks",
-    icon: () => <CalendarIcon />,
+    icon: <CalendarIcon />,
   },
 ];
 
@@ -32,17 +33,17 @@ export const landlordLinks: NavLinkItem[] = [
   {
     to: "/properties",
     label: "Managed Properties",
-    icon: () => <MultipleHousesIcon />,
+    icon: <MultipleHousesIcon variant="light" />,
   },
   {
     to: "/calendar",
     label: "Calendar",
-    icon: () => <CalendarIcon />,
+    icon: <CalendarIcon />,
   },
   {
     to: "/tasks",
     label: "Tasks",
-    icon: () => <CalendarIcon />,
+    icon: <CalendarIcon />,
   },
 ];
 
@@ -51,16 +52,11 @@ export const tenantLinks: NavLinkItem[] = [
   {
     to: "/properties",
     label: "Managed Properties",
-    icon: () => <MultipleHousesIcon />,
+    icon: <MultipleHousesIcon variant="light" />,
   },
   {
     to: "/calendar",
     label: "Calendar",
-    icon: () => <CalendarIcon />,
-  },
-  {
-    to: "/tasks",
-    label: "Tasks",
-    icon: () => <CalendarIcon />,
+    icon: <CalendarIcon />,
   },
 ];
