@@ -1,7 +1,7 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export enum ListingStatusPillState {
+export enum PropertyStatusPillState {
   VACANT,
 }
 
@@ -12,8 +12,8 @@ export function ListingSummary({
   province,
   postcode,
   summaryDescription,
-  listingStatusText,
-  listingStatusPillState,
+  propertyStatusText,
+  propertyStatusPillState,
   className = "",
 }: {
   streetNumber: string;
@@ -22,8 +22,8 @@ export function ListingSummary({
   province: string;
   postcode: string;
   summaryDescription: string;
-  listingStatusText: string;
-  listingStatusPillState: ListingStatusPillState;
+  propertyStatusText: string;
+  propertyStatusPillState: PropertyStatusPillState;
   className?: string;
 }): React.JSX.Element {
   return (
@@ -37,7 +37,7 @@ export function ListingSummary({
           postcode={postcode}
           className="mr-6"
         />
-        <StatusPill text={listingStatusText} state={listingStatusPillState} />
+        <StatusPill text={propertyStatusText} state={propertyStatusPillState} />
       </div>
 
       <Description description={summaryDescription} />
@@ -88,12 +88,12 @@ function StatusPill({
   className = "",
 }: {
   text: string;
-  state: ListingStatusPillState;
+  state: PropertyStatusPillState;
   className?: string;
 }): React.JSX.Element {
   const bgColorClass = (() => {
     switch (state) {
-      case ListingStatusPillState.VACANT:
+      case PropertyStatusPillState.VACANT:
         return "bg-(--status-green-color)";
     }
   })();
