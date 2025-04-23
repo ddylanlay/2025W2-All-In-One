@@ -6,8 +6,6 @@ type NavBarLinkProps = LinkProps & {
   className?: string;
 };
 
-//This is a single link component that accepts props for rendering a nav link
-//It is responsible for rendering one individual link
 export function NavBarLink({
   children,
   className = "",
@@ -19,14 +17,11 @@ export function NavBarLink({
     </Link>
   );
 }
-//This component handles multiple NavBarLink components
-//It accepts an array of link components and renders them using the
-//nav bar link component
-//
+
 export interface NavLinkItem {
   to: string;
   label: string;
-  icon?: () => React.ReactNode;
+  icon?: React.ReactNode; 
 }
 
 interface NavBarLinksProps {
@@ -38,7 +33,7 @@ export function NavBarLinks({ links }: NavBarLinksProps) {
     <>
       {links.map(({ to, label, icon }) => (
         <Link to={to} className="flex items-center gap-2 p-2" key={to}>
-          {icon && icon()}
+          {icon && icon} {/* Render the icon directly */}
           <span>{label}</span>
         </Link>
       ))}

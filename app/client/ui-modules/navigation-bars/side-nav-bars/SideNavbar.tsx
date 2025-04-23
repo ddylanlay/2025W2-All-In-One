@@ -32,7 +32,7 @@ export function SideNavBar({ isOpen, onClose, navLinks }: SideNavBarProps) {
       <SidebarContainer isOpen={isOpen}>
         <SidebarHeader onClose={onClose} />
         <SidebarContent
-          nav={<NavBarLinks links={navLinks} />} //List of links from the user type definition
+          nav={<NavBarLinks links={navLinks} />}
           bottom={
             <>
               {commonLinks.profile}
