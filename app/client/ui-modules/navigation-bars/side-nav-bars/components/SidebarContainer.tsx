@@ -1,12 +1,15 @@
 import React from "react";
-import { Button } from "../../theming/components/shadcn/Button";
-import { EscapeIcon } from "../../theming/icons/EscapeIcon";
+import { Button } from "../../../theming-shadcn/Button";
+import { EscapeIcon } from "../../../theming/icons/EscapeIcon";
 interface SidebarContainerProps {
   isOpen: boolean;
   children: React.ReactNode;
 }
 
-export const SidebarContainer = ({ isOpen, children }: SidebarContainerProps) => (
+export const SidebarContainer = ({
+  isOpen,
+  children,
+}: SidebarContainerProps) => (
   <div
     className={`fixed top-0 left-0 h-screen w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
       isOpen ? "translate-x-0" : "-translate-x-full"
