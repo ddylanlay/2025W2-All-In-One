@@ -145,7 +145,7 @@ function DraftListingPageContent({
         bedrooms={propertyBedrooms}
         price={propertyPrice}
       />
-      <PropertyFeatures featuresList={propertyFeatures} className="w-[300px]" />
+      <PropertyFeatures featuresList={propertyFeatures} />
       <InspectionBookingList
         bookingUiStateList={inspectionBookingUiStateList}
         onBook={onBook}

@@ -8,7 +8,7 @@ export function PropertyFeatures({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={className}>
+    <div className={`w-[400px] ${className}`}>
       <Heading text="Features" className="block mb-2" />
       <FeaturesPillList featuresList={featuresList} />
     </div>
