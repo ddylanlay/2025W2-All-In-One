@@ -16,18 +16,18 @@ export function ListingStatusPill({
   className?: string;
 }): React.JSX.Element {
   const bgColorClass: { [key in ListingStatusPillVariant]: string } = {
-    [ListingStatusPillVariant.DRAFT]: "bg-(--status-orange-color)",
-    [ListingStatusPillVariant.CURRENT]: "bg-(--status-dark-blue-color)",
+    [ListingStatusPillVariant.DRAFT]: "bg-(--status-orange-color) text-white",
+    [ListingStatusPillVariant.CURRENT]: "bg-(--status-dark-blue-color) text-white",
   };
 
   return (
-    <span
+    <div
       className={twMerge(
-        `${bgColorClass[variant]} geist-semibold text-white py-2 px-5 rounded-full`,
+        `${bgColorClass[variant]} geist-semibold text-[24px] inline-block py-1.5 px-7 rounded-full`,
         className
       )}
     >
       {text}
-    </span>
+    </div>
   );
 }

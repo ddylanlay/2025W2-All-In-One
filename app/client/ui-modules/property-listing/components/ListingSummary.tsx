@@ -100,7 +100,7 @@ function StatusPill({
 
   return (
     <span
-      className={twMerge(`px-5 py-0.5 h-min text-[12px] rounded-full ${bgColorClass}`, className)}
+      className={twMerge(`px-5 py-0.5 text-[12px] rounded-full ${bgColorClass}`, className)}
     >
       {text}
     </span>
