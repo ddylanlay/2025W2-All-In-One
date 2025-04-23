@@ -1,5 +1,8 @@
 import React from "react";
-import { ThemedButton } from "../../theming/components/ThemedButton";
+import {
+  ThemedButton,
+  ThemedButtonVariants,
+} from "../../theming/components/ThemedButton";
 import { Divider } from "../../theming/components/Divider";
 import { CalendarIcon } from "../../theming/icons/CalendarIcon";
 import { twMerge } from "tailwind-merge";
@@ -85,7 +88,7 @@ function BookingEntry({
           className="mr-auto"
         />
         <CalendarIcon className="w-[22px] h-[20px] mr-6" />
-        <BookingButton index={index} onBook={onBook} />
+        <BookingButton index={index} onClick={onBook} />
       </div>
     </div>
   );
@@ -112,21 +115,22 @@ function BookingDateTime({
 
 function BookingButton({
   index,
-  onBook,
+  onClick,
   className = "",
 }: {
   index: number;
-  onBook: (index: number) => void;
+  onClick: (index: number) => void;
   className?: string;
 }): React.JSX.Element {
   return (
     <ThemedButton
+      variant={ThemedButtonVariants.TERTIARY}
       onClick={() => {
-        onBook(index);
+        onClick(index);
       }}
       className={twMerge("w-[117px] h-[36px]", className)}
     >
-      <span className="text-white">Book</span>
+      Book
     </ThemedButton>
   );
 }
