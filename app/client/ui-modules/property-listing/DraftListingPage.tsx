@@ -7,13 +7,10 @@ import {
 } from "./components/ListingSummary";
 import { ListingNavbar } from "./components/ListingNavbar";
 import { ListingDescription } from "./components/ListingDescription";
-import {
-  InspectionBookingList,
-  InspectionBookingListUiState,
-} from "./components/InspectionBookingList";
 import { LeftCircularArrowIcon } from "../theming/icons/LeftCircularArrowIcon";
 import { RightCircularArrowIcon } from "../theming/icons/RightCircularArrowIcon";
 import { ImageCarousel } from "../theming/components/ImageCarousel";
+import { InspectionBookingListUiState, PropertyInspections } from "/app/client/ui-modules/property-listing/components/PropertyInspections";
 
 export function DraftListingPage({
   className = "",
@@ -146,7 +143,7 @@ function DraftListingPageContent({
         price={propertyPrice}
       />
       <PropertyFeatures featuresList={propertyFeatures} />
-      <InspectionBookingList
+      <PropertyInspections
         bookingUiStateList={inspectionBookingUiStateList}
         onBook={onBook}
       />

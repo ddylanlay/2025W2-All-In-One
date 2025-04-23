@@ -1,4 +1,5 @@
 import React from "react";
+import { SubHeading } from "/app/client/ui-modules/theming/components/SubHeading";
 
 export function PropertyFeatures({
   featuresList,
@@ -9,21 +10,9 @@ export function PropertyFeatures({
 }): React.JSX.Element {
   return (
     <div className={`w-[400px] ${className}`}>
-      <Heading text="Features" className="block mb-2" />
+      <SubHeading text="Features" className="block mb-2" />
       <FeaturesPillList featuresList={featuresList} />
     </div>
-  );
-}
-
-function Heading({
-  text,
-  className = "",
-}: {
-  text: string;
-  className?: string;
-}): React.JSX.Element {
-  return (
-    <span className={`geist-semibold text-[18px] ${className}`}>{text}</span>
   );
 }
 
