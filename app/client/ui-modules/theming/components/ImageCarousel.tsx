@@ -65,7 +65,9 @@ function ImageCarouselButtons({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-row items-center h-full w-full ${className}`}>
+    <div
+      className={twMerge("flex flex-row items-center h-full w-full", className)}
+    >
       <IconButton
         icon={leftArrowIcon}
         onClick={onLeftArrowClicked}
@@ -86,7 +88,7 @@ function ImageCarouselLoadingSkeleton({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`h-[445px] w-[724px] bg-[#EEEEEE] ${className}`}>
+    <div className={twMerge("h-[445px] w-[724px] bg-[#EEEEEE]", className)}>
       Loading...
     </div>
   );

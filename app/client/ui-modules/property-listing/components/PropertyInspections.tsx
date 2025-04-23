@@ -74,7 +74,7 @@ function BookingEntry({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-col ${className}`}>
+    <div className={twMerge("flex flex-col", className)}>
       {shouldDisplayDivider ? <Divider /> : ""}
 
       <div className="flex flex-row items-center">
@@ -124,7 +124,7 @@ function BookingButton({
       onClick={() => {
         onBook(index);
       }}
-      className={`w-[117px] h-[36px] ${className}`}
+      className={twMerge("w-[117px] h-[36px]", className)}
     >
       <span className="text-white">Book</span>
     </ThemedButton>

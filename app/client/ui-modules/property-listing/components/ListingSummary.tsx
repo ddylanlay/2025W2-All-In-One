@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 export enum ListingStatusPillState {
   VACANT,
@@ -26,7 +27,7 @@ export function ListingSummary({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-col ${className}`}>
+    <div className={twMerge("flex flex-col", className)}>
       <div className="flex flex-row items-center">
         <Address
           streetNumber={streetNumber}
@@ -60,7 +61,7 @@ function Address({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-row items-end ${className}`}>
+    <div className={twMerge("flex flex-row items-end", className)}>
       <span className="geist-semibold text-[20px] mr-3">{`${streetNumber} ${street}`}</span>
       <span className="geist-regular text-[17px]">{`${suburb}, ${province}, ${postcode}`}</span>
     </div>
@@ -75,7 +76,7 @@ function Description({
   className?: string;
 }): React.JSX.Element {
   return (
-    <span className={`geist-regular text-(--body-tertiary-color) ${className}`}>
+    <span className={twMerge("geist-regular text-(--body-tertiary-color)", className)}>
       {description}
     </span>
   );
@@ -99,7 +100,7 @@ function StatusPill({
 
   return (
     <span
-      className={`px-5 py-0.5 h-min text-[12px] rounded-full ${bgColorClass} ${className}`}
+      className={twMerge(`px-5 py-0.5 h-min text-[12px] rounded-full ${bgColorClass}`, className)}
     >
       {text}
     </span>

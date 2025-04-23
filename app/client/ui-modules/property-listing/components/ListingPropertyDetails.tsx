@@ -51,7 +51,7 @@ function PropertyDetailEntry({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-col border border-(--divider-color) rounded-md p-2 ${className}`}>
+    <div className={twMerge("flex flex-col border border-(--divider-color) rounded-md p-2", className)}>
       <span className="geist-regular text-[14px] text-(--body-secondary-color)">
         {label}
       </span>

@@ -117,7 +117,7 @@ function DraftListingPageContent({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`${className}`}>
+    <div className={className}>
       <ListingSummary
         streetNumber={streetNumber}
         street={street}

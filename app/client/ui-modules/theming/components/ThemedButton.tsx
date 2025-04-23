@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Basic button themed according to PropManager figma designs.
@@ -17,7 +18,7 @@ export function ThemedButton({
   return (
     <button
       onClick={onClick}
-      className={`${bgColorClass} px-3 py-1.5 rounded-md cursor-pointer ${className}`}
+      className={twMerge(`${bgColorClass} px-3 py-1.5 rounded-md cursor-pointer`, className)}
     >
       {children}
     </button>
