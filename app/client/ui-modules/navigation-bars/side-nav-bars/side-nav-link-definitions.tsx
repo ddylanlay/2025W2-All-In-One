@@ -2,65 +2,65 @@ import React from "react";
 import { MultipleHousesIcon } from "../../theming/icons/MultipleHousesIcon";
 import { CalendarIcon } from "../../theming/icons/CalendarIcon";
 
+export interface NavLinkItem {
+  to: string;
+  label: string;
+  icon?: () => React.ReactNode;
+}
 
-
-const getMultipleHousesIcon = () => React.createElement(MultipleHousesIcon, { variant: "light" });
-const getCalendarIcon = () => React.createElement(CalendarIcon);
-
-
-export const agentLinks = [
+export const agentLinks: NavLinkItem[] = [
   { to: "/", label: "Overview" },
   {
     to: "/properties",
     label: "Managed Properties",
-    icon: getMultipleHousesIcon,
+    icon: () => <MultipleHousesIcon />,
   },
   {
     to: "/calendar",
     label: "Calendar",
-    icon: getCalendarIcon,
+    icon: () => <CalendarIcon />,
   },
   {
     to: "/tasks",
     label: "Tasks",
-    icon: getCalendarIcon,
+    icon: () => <CalendarIcon />,
   },
 ];
 
-export const landlordLinks = [
+export const landlordLinks: NavLinkItem[] = [
   { to: "/", label: "Overview" },
   {
     to: "/properties",
     label: "Managed Properties",
-    icon: getMultipleHousesIcon,
+    icon: () => <MultipleHousesIcon />,
   },
   {
     to: "/calendar",
     label: "Calendar",
-    icon: getCalendarIcon,
+    icon: () => <CalendarIcon />,
   },
   {
     to: "/tasks",
     label: "Tasks",
-    icon: getCalendarIcon,
+    icon: () => <CalendarIcon />,
   },
 ];
 
-export const tenantLinks = [
+export const tenantLinks: NavLinkItem[] = [
   { to: "/", label: "Overview" },
   {
     to: "/properties",
     label: "Managed Properties",
-    icon: getMultipleHousesIcon,
+    icon: () => <MultipleHousesIcon />,
   },
   {
     to: "/calendar",
     label: "Calendar",
-    icon: getCalendarIcon,
+    icon: () => <CalendarIcon />,
   },
   {
     to: "/tasks",
     label: "Tasks",
-    icon: getCalendarIcon,
+    icon: () => <CalendarIcon />,
   },
 ];
