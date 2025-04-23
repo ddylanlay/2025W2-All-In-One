@@ -2,7 +2,7 @@ import React from "react";
 import { PropertyFeatures } from "./components/PropertyFeatures";
 import { ListingPropertyDetails } from "./components/ListingPropertyDetails";
 import {
-  ListingStatusPillState,
+  PropertyStatusPillState,
   ListingSummary,
 } from "./components/ListingSummary";
 import { ListingNavbar } from "./components/ListingNavbar";
@@ -36,9 +36,9 @@ export function DraftListingPage({
         suburb="Toorak"
         province="VIC"
         postcode="3166"
-        listingStatusText="Vacant"
-        listingStatusPillState={ListingStatusPillState.VACANT}
         summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
+        propertyStatusText="Vacant"
+        propertyStatusPillState={PropertyStatusPillState.VACANT}
         propertyDescription="Fake property description"
         propertyFeatures={[
           "Pool",
@@ -88,9 +88,9 @@ function DraftListingPageContent({
   suburb,
   province,
   postcode,
-  listingStatusText,
-  listingStatusPillState,
   summaryDescription,
+  propertyStatusText,
+  propertyStatusPillState,
   propertyDescription,
   propertyFeatures,
   propertyType,
@@ -111,9 +111,9 @@ function DraftListingPageContent({
   suburb: string;
   province: string;
   postcode: string;
-  listingStatusText: string;
-  listingStatusPillState: ListingStatusPillState;
   summaryDescription: string;
+  propertyStatusText: string;
+  propertyStatusPillState: PropertyStatusPillState;
   propertyDescription: string;
   propertyFeatures: string[];
   propertyType: string;
@@ -138,8 +138,8 @@ function DraftListingPageContent({
         province={province}
         postcode={postcode}
         summaryDescription={summaryDescription}
-        listingStatusText={listingStatusText}
-        listingStatusPillState={listingStatusPillState}
+        propertyStatusText={propertyStatusText}
+        propertyStatusPillState={propertyStatusPillState}
       />
       <ImageCarousel
         imageUrls={listingImageUrls}
