@@ -5,7 +5,6 @@ import {
   PropertyStatusPillVariant,
   ListingSummary,
 } from "./components/ListingSummary";
-import { ListingNavbar } from "./components/ListingNavbar";
 import { ListingDescription } from "./components/ListingDescription";
 import { LeftCircularArrowIcon } from "../theming/icons/LeftCircularArrowIcon";
 import { RightCircularArrowIcon } from "../theming/icons/RightCircularArrowIcon";
@@ -16,7 +15,12 @@ import {
 } from "/app/client/ui-modules/property-listing/components/PropertyInspections";
 import { ApplyButton } from "/app/client/ui-modules/property-listing/components/ApplyButton";
 import { ContactAgentButton } from "/app/client/ui-modules/property-listing/components/ContactAgentButton";
-import { ListingStatusPill, ListingStatusPillVariant } from "/app/client/ui-modules/property-listing/components/ListingStatusPill";
+import {
+  ListingStatusPill,
+  ListingStatusPillVariant,
+} from "/app/client/ui-modules/property-listing/components/ListingStatusPill";
+import { BackLink } from "/app/client/ui-modules/theming/components/BackLink";
+import { BackButtonIcon } from "/app/client/ui-modules/theming/icons/BackButtonIcon";
 
 export function DraftListingPage({
   className = "",
@@ -25,11 +29,10 @@ export function DraftListingPage({
 }): React.JSX.Element {
   return (
     <div className={`flex flex-col ${className}`}>
-      <ListingNavbar
-        headingText="86 Fury Lane - Draft Property Listing"
-        onBack={() => {
-          console.log("back pressed");
-        }}
+      <BackLink
+        label="Back to Properties"
+        backButtonIcon={<BackButtonIcon />}
+        onClick={() => {console.log("back pressed")}}
       />
       <DraftListingPageContent
         streetNumber="86"
@@ -130,7 +133,7 @@ function DraftListingPageContent({
   inspectionBookingUiStateList: InspectionBookingListUiState[];
   listingImageUrls: string[];
   listingStatusText: string;
-  listingStatusPillVariant: ListingStatusPillVariant
+  listingStatusPillVariant: ListingStatusPillVariant;
   onBook: (index: number) => void;
   onApply: () => void;
   onContactAgent: () => void;
@@ -169,7 +172,10 @@ function DraftListingPageContent({
       />
       <ApplyButton onClick={onApply} />
       <ContactAgentButton onClick={onContactAgent} />
-      <ListingStatusPill text={listingStatusText} variant={listingStatusPillVariant}/>
+      <ListingStatusPill
+        text={listingStatusText}
+        variant={listingStatusPillVariant}
+      />
     </div>
   );
 }
