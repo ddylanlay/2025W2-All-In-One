@@ -1,6 +1,7 @@
 import React from "react";
 import { BackButtonIcon } from "../../theming/icons/BackButtonIcon";
 import { IconButton } from "../../theming/components/IconButton";
+import { twMerge } from "tailwind-merge";
 
 export function ListingNavbar({
   headingText,
@@ -12,7 +13,7 @@ export function ListingNavbar({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-row items-center ${className}`}>
+    <div className={twMerge("flex flex-row items-center", className)}>
       <IconButton icon={<BackButtonIcon />} onClick={onBack} className="mr-3" />
       <NavbarHeading text={headingText} />
     </div>
@@ -26,5 +27,5 @@ function NavbarHeading({
   text: string;
   className?: string;
 }): React.JSX.Element {
-  return <span className={`geist-semibold text-lg ${className}`}>{text}</span>;
+  return <span className={twMerge("geist-semibold text-lg", className)}>{text}</span>;
 }
