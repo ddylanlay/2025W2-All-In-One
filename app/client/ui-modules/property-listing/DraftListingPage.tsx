@@ -10,7 +10,12 @@ import { ListingDescription } from "./components/ListingDescription";
 import { LeftCircularArrowIcon } from "../theming/icons/LeftCircularArrowIcon";
 import { RightCircularArrowIcon } from "../theming/icons/RightCircularArrowIcon";
 import { ImageCarousel } from "../theming/components/ImageCarousel";
-import { InspectionBookingListUiState, PropertyInspections } from "/app/client/ui-modules/property-listing/components/PropertyInspections";
+import {
+  InspectionBookingListUiState,
+  PropertyInspections,
+} from "/app/client/ui-modules/property-listing/components/PropertyInspections";
+import { ApplyButton } from "/app/client/ui-modules/property-listing/components/ApplyButton";
+import { ContactAgentButton } from "/app/client/ui-modules/property-listing/components/ContactAgentButton";
 
 export function DraftListingPage({
   className = "",
@@ -68,6 +73,10 @@ export function DraftListingPage({
         onBook={(index: number) => {
           console.log(`booking button ${index} pressed`);
         }}
+        onApply={() => {
+          console.log("applied!");
+        }}
+        onContactAgent={() => console.log("contacting agent!")}
       />
     </div>
   );
@@ -93,6 +102,8 @@ function DraftListingPageContent({
   inspectionBookingUiStateList,
   listingImageUrls,
   onBook,
+  onApply,
+  onContactAgent,
   className = "",
 }: {
   streetNumber: string;
@@ -114,6 +125,8 @@ function DraftListingPageContent({
   inspectionBookingUiStateList: InspectionBookingListUiState[];
   listingImageUrls: string[];
   onBook: (index: number) => void;
+  onApply: () => void;
+  onContactAgent: () => void;
   className?: string;
 }): React.JSX.Element {
   return (
@@ -147,6 +160,8 @@ function DraftListingPageContent({
         bookingUiStateList={inspectionBookingUiStateList}
         onBook={onBook}
       />
+      <ApplyButton onClick={onApply} />
+      <ContactAgentButton onClick={onContactAgent} />
     </div>
   );
 }
