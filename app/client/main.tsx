@@ -6,9 +6,9 @@ import { GuestLandingPage } from "./ui-modules/guest-landing-page/GuestLandingPa
 import { BrowserRouter, Routes, Route } from "react-router";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { DraftListingPage } from "./ui-modules/property-listing/DraftListingPage";
 import { DefaultTheme } from "./ui-modules/theming/themes/DefaultTheme";
 import { BottomNavbar } from "./ui-modules/navigation-bars/BottonNavbar";
+import { PropertyListingPage } from "/app/client/ui-modules/property-listing-page/PropertyListingPage";
 
 Meteor.startup(initialiseReactRoot);
 
@@ -27,7 +27,7 @@ function AppRoot(): React.JSX.Element {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<GuestLandingPage />} />
-              <Route path="/test" element={<DraftListingPage />} />
+              <Route path="/test" element={<PropertyListingPage />} />
               <Route path="/home-example" element={<ExampleHomePage />} />
             </Routes>
             <BottomNavbar />

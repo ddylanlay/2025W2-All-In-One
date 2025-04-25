@@ -23,7 +23,7 @@ export function ListingStatusPill({
   return (
     <div
       className={twMerge(
-        `${variantStyling[variant]} geist-semibold text-[24px] inline-block py-1.5 px-7 rounded-full`,
+        `${variantStyling[variant]} geist-semibold text-[20px] inline-block py-1.5 px-7 rounded-full`,
         className
       )}
     >
