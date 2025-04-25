@@ -21,6 +21,7 @@ import {
 } from "/app/client/ui-modules/property-listing/components/ListingStatusPill";
 import { BackLink } from "/app/client/ui-modules/theming/components/BackLink";
 import { BackButtonIcon } from "/app/client/ui-modules/theming/icons/BackButtonIcon";
+import { twMerge } from "tailwind-merge";
 
 export function DraftListingPage({
   className = "",
@@ -70,6 +71,9 @@ export function DraftListingPage({
       ]}
       listingStatusText="DRAFT LISTING"
       listingStatusPillVariant={ListingStatusPillVariant.DRAFT}
+      onBack={() => {
+        console.log("back button pressed");
+      }}
       onBook={(index: number) => {
         console.log(`booking button ${index} pressed`);
       }}
@@ -103,6 +107,7 @@ function DraftListingPageContent({
   listingImageUrls,
   listingStatusText,
   listingStatusPillVariant,
+  onBack,
   onBook,
   onApply,
   onContactAgent,
@@ -128,6 +133,7 @@ function DraftListingPageContent({
   listingImageUrls: string[];
   listingStatusText: string;
   listingStatusPillVariant: ListingStatusPillVariant;
+  onBack: () => void;
   onBook: (index: number) => void;
   onApply: () => void;
   onContactAgent: () => void;
@@ -135,14 +141,12 @@ function DraftListingPageContent({
 }): React.JSX.Element {
   return (
     <div className={className}>
-      <BackLink
-        label="Back to Properties"
-        backButtonIcon={<BackButtonIcon />}
-        onClick={() => {
-          console.log("back pressed");
-        }}
+      <TopBar
+        listingStatusText={listingStatusText}
+        listingStatusPillVariant={listingStatusPillVariant}
+        onBack={onBack}
       />
-      <ListingSummary
+      <ListingHero
         streetNumber={streetNumber}
         street={street}
         suburb={suburb}
@@ -151,32 +155,153 @@ function DraftListingPageContent({
         summaryDescription={summaryDescription}
         propertyStatusText={propertyStatusText}
         propertyStatusPillVariant={propertyStatusPillVariant}
+        propertyType={propertyType}
+        propertyLandArea={propertyLandArea}
+        propertyBathrooms={propertyBathrooms}
+        propertyParkingSpaces={propertyParkingSpaces}
+        propertyBedrooms={propertyBedrooms}
+        propertyPrice={propertyPrice}
+        listingImageUrls={listingImageUrls}
+        onApply={onApply}
+        onContactAgent={onContactAgent}
       />
+      <ListingDetails
+        propertyDescription={propertyDescription}
+        inspectionBookingUiStateList={inspectionBookingUiStateList}
+        onBook={onBook}
+        propertyFeatures={propertyFeatures}
+      />
+    </div>
+  );
+}
+
+function TopBar({
+  listingStatusText,
+  listingStatusPillVariant,
+  onBack,
+  className = "",
+}: {
+  listingStatusText: string;
+  listingStatusPillVariant: ListingStatusPillVariant;
+  onBack: () => void;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={twMerge("flex items-start", className)}>
+      <BackLink
+        label="Back to Properties"
+        backButtonIcon={<BackButtonIcon />}
+        onClick={onBack}
+        className="mr-auto"
+      />
+      <ListingStatusPill
+        text={listingStatusText}
+        variant={listingStatusPillVariant}
+      />
+    </div>
+  );
+}
+
+function ListingHero({
+  className = "",
+  streetNumber,
+  street,
+  suburb,
+  province,
+  postcode,
+  summaryDescription,
+  propertyStatusText,
+  propertyStatusPillVariant,
+  propertyType,
+  propertyLandArea,
+  propertyBathrooms,
+  propertyParkingSpaces,
+  propertyBedrooms,
+  propertyPrice,
+  listingImageUrls,
+  onApply,
+  onContactAgent,
+}: {
+  className?: string;
+  streetNumber: string;
+  street: string;
+  suburb: string;
+  province: string;
+  postcode: string;
+  summaryDescription: string;
+  propertyStatusText: string;
+  propertyStatusPillVariant: PropertyStatusPillVariant;
+  propertyType: string;
+  propertyLandArea: string;
+  propertyBathrooms: string;
+  propertyParkingSpaces: string;
+  propertyBedrooms: string;
+  propertyPrice: string;
+  listingImageUrls: string[];
+  onApply: () => void;
+  onContactAgent: () => void;
+}): React.JSX.Element {
+  return (
+    <div className={twMerge("flex", className)}>
       <ImageCarousel
         imageUrls={listingImageUrls}
         leftArrowIcon={<LeftCircularArrowIcon />}
         rightArrowIcon={<RightCircularArrowIcon />}
       />
-      <ListingDescription description={propertyDescription} />
-      <ListingPropertyDetails
-        propertyType={propertyType}
-        area={propertyLandArea}
-        bathrooms={propertyBathrooms}
-        parking={propertyParkingSpaces}
-        bedrooms={propertyBedrooms}
-        price={propertyPrice}
-      />
-      <PropertyFeatures featuresList={propertyFeatures} />
-      <PropertyInspections
-        bookingUiStateList={inspectionBookingUiStateList}
-        onBook={onBook}
-      />
-      <ApplyButton onClick={onApply} />
-      <ContactAgentButton onClick={onContactAgent} />
-      <ListingStatusPill
-        text={listingStatusText}
-        variant={listingStatusPillVariant}
-      />
+      <div className="flex flex-col">
+        <ListingSummary
+          streetNumber={streetNumber}
+          street={street}
+          suburb={suburb}
+          province={province}
+          postcode={postcode}
+          summaryDescription={summaryDescription}
+          propertyStatusText={propertyStatusText}
+          propertyStatusPillVariant={propertyStatusPillVariant}
+        />
+        <ListingPropertyDetails
+          propertyType={propertyType}
+          area={propertyLandArea}
+          bathrooms={propertyBathrooms}
+          parking={propertyParkingSpaces}
+          bedrooms={propertyBedrooms}
+          price={propertyPrice}
+        />
+        <div className="inline-block">
+          <ApplyButton onClick={onApply} />
+          <ContactAgentButton onClick={onContactAgent} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ListingDetails({
+  propertyDescription,
+  inspectionBookingUiStateList,
+  onBook,
+  propertyFeatures,
+  className = "",
+}: {
+  propertyDescription: string;
+  inspectionBookingUiStateList: InspectionBookingListUiState[];
+  onBook: (index: number) => void;
+  propertyFeatures: string[];
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={twMerge("flex", className)}>
+      <div className="flex flex-col">
+        <ListingDescription description={propertyDescription} />
+        <PropertyInspections
+          bookingUiStateList={inspectionBookingUiStateList}
+          onBook={onBook}
+        />
+      </div>
+
+      <div className="flex flex-col">
+        <PropertyFeatures featuresList={propertyFeatures} />
+      </div>
     </div>
   );
 }
