@@ -254,9 +254,9 @@ function ListingHero({
         imageUrls={listingImageUrls}
         leftArrowIcon={<LeftCircularArrowIcon />}
         rightArrowIcon={<RightCircularArrowIcon />}
-        className="shrink-0 mr-6"
+        className="flex-2 min-w-[480px] mr-6"
       />
-      <div className="flex flex-col">
+      <div className="flex-3 flex flex-col">
         <ListingSummary
           streetNumber={streetNumber}
           street={street}
@@ -275,9 +275,9 @@ function ListingHero({
           parking={propertyParkingSpaces}
           bedrooms={propertyBedrooms}
           price={propertyPrice}
-          className="mb-5"
+          className="w-full mb-8"
         />
-        <div className="inline-block">
+        <div className="flex">
           <ApplyButton onClick={onApply} className="mr-4" />
           <ContactAgentButton onClick={onContactAgent} />
         </div>
