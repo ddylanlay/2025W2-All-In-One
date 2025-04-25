@@ -12,24 +12,24 @@ import { ImageCarousel } from "../theming/components/ImageCarousel";
 import {
   InspectionBookingListUiState,
   PropertyInspections,
-} from "/app/client/ui-modules/property-listing/components/PropertyInspections";
-import { ApplyButton } from "/app/client/ui-modules/property-listing/components/ApplyButton";
-import { ContactAgentButton } from "/app/client/ui-modules/property-listing/components/ContactAgentButton";
+} from "/app/client/ui-modules/property-listing-page/components/PropertyInspections";
+import { ApplyButton } from "/app/client/ui-modules/property-listing-page/components/ApplyButton";
+import { ContactAgentButton } from "/app/client/ui-modules/property-listing-page/components/ContactAgentButton";
 import {
   ListingStatusPill,
   ListingStatusPillVariant,
-} from "/app/client/ui-modules/property-listing/components/ListingStatusPill";
+} from "/app/client/ui-modules/property-listing-page/components/ListingStatusPill";
 import { BackLink } from "/app/client/ui-modules/theming/components/BackLink";
 import { BackButtonIcon } from "/app/client/ui-modules/theming/icons/BackButtonIcon";
 import { twMerge } from "tailwind-merge";
 
-export function DraftListingPage({
+export function PropertyListingPage({
   className = "",
 }: {
   className?: string;
 }): React.JSX.Element {
   return (
-    <DraftListingPageContent
+    <ListingPageContent
       streetNumber="86"
       street="Fury Lane"
       suburb="Toorak"
@@ -91,7 +91,7 @@ export function DraftListingPage({
   );
 }
 
-function DraftListingPageContent({
+function ListingPageContent({
   streetNumber,
   street,
   suburb,
@@ -254,7 +254,7 @@ function ListingHero({
         imageUrls={listingImageUrls}
         leftArrowIcon={<LeftCircularArrowIcon />}
         rightArrowIcon={<RightCircularArrowIcon />}
-        className="flex-2 min-w-[480px] mr-6"
+        className="flex-2 min-w-[500px] mr-6"
       />
       <div className="flex-3 flex flex-col">
         <ListingSummary
