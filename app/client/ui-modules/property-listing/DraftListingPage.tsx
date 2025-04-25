@@ -38,13 +38,18 @@ export function DraftListingPage({
       summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
       propertyStatusText="Vacant"
       propertyStatusPillVariant={PropertyStatusPillVariant.VACANT}
-      propertyDescription="Fake property description"
+      propertyDescription="Modern apartment with spacious living areas and a beautiful garden. Recently renovated with new
+        appliances and fixtures throughout. The property features an open-plan kitchen and dining area that flows
+        onto a private balcony with city views. The master bedroom includes an ensuite bathroom and built-in
+        wardrobes, while the second bedroom is generously sized and located near the main bathroom."
       propertyFeatures={[
         "Pool",
         "Gym",
         "Garage",
         "Pet friendly",
         "Washing machine",
+        "Shed",
+        "Lots of grass",
       ]}
       propertyType="Apartment"
       propertyLandArea="500m²"
@@ -81,7 +86,7 @@ export function DraftListingPage({
         console.log("applied!");
       }}
       onContactAgent={() => console.log("contacting agent!")}
-      className={className}
+      className={twMerge("p-5", className)}
     />
   );
 }
@@ -145,6 +150,7 @@ function DraftListingPageContent({
         listingStatusText={listingStatusText}
         listingStatusPillVariant={listingStatusPillVariant}
         onBack={onBack}
+        className="mb-3"
       />
       <ListingHero
         streetNumber={streetNumber}
@@ -164,6 +170,7 @@ function DraftListingPageContent({
         listingImageUrls={listingImageUrls}
         onApply={onApply}
         onContactAgent={onContactAgent}
+        className="mb-6"
       />
       <ListingDetails
         propertyDescription={propertyDescription}
@@ -247,6 +254,7 @@ function ListingHero({
         imageUrls={listingImageUrls}
         leftArrowIcon={<LeftCircularArrowIcon />}
         rightArrowIcon={<RightCircularArrowIcon />}
+        className="shrink-0 mr-6"
       />
       <div className="flex flex-col">
         <ListingSummary
@@ -258,6 +266,7 @@ function ListingHero({
           summaryDescription={summaryDescription}
           propertyStatusText={propertyStatusText}
           propertyStatusPillVariant={propertyStatusPillVariant}
+          className="mb-2"
         />
         <ListingPropertyDetails
           propertyType={propertyType}
@@ -266,9 +275,10 @@ function ListingHero({
           parking={propertyParkingSpaces}
           bedrooms={propertyBedrooms}
           price={propertyPrice}
+          className="mb-5"
         />
         <div className="inline-block">
-          <ApplyButton onClick={onApply} />
+          <ApplyButton onClick={onApply} className="mr-4" />
           <ContactAgentButton onClick={onContactAgent} />
         </div>
       </div>
@@ -290,16 +300,19 @@ function ListingDetails({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={twMerge("flex", className)}>
-      <div className="flex flex-col">
-        <ListingDescription description={propertyDescription} />
+    <div className={twMerge("flex gap-6", className)}>
+      <div className="flex-1 flex flex-col">
+        <ListingDescription
+          description={propertyDescription}
+          className="mb-4"
+        />
         <PropertyInspections
           bookingUiStateList={inspectionBookingUiStateList}
           onBook={onBook}
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex-1 flex flex-col">
         <PropertyFeatures featuresList={propertyFeatures} />
       </div>
     </div>
