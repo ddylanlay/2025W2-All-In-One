@@ -16,7 +16,6 @@ export function ImageCarousel({
 }): React.JSX.Element {
   const [imagesLoaded, failedUrls] = useImagePreload(imageUrls);
   const [currentImageI, setCurrentImageI] = useState(0);
-
   const images = imageUrls.map((url) => (
     <img
       key={url}
@@ -24,6 +23,7 @@ export function ImageCarousel({
       className="h-full w-full object-cover rounded-lg"
     />
   ));
+
   const isFirstImage = currentImageI === 0;
   const isLastImage = currentImageI === images.length - 1;
 

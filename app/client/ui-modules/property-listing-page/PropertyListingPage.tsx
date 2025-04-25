@@ -22,7 +22,9 @@ import {
 import { BackLink } from "/app/client/ui-modules/theming/components/BackLink";
 import { BackButtonIcon } from "/app/client/ui-modules/theming/icons/BackButtonIcon";
 import { twMerge } from "tailwind-merge";
+import { SubmitDraftListingButton } from "/app/client/ui-modules/property-listing-page/components/SubmitDraftListingButton";
 
+// TODO: The state here is temporary. During server data integration, this should be moved to a redux slice.
 export function PropertyListingPage({
   className = "",
 }: {
@@ -76,6 +78,8 @@ export function PropertyListingPage({
       ]}
       listingStatusText="DRAFT LISTING"
       listingStatusPillVariant={ListingStatusPillVariant.DRAFT}
+      shouldDisplayListingStatus={true}
+      shouldDisplaySubmitDraftButton={true}
       onBack={() => {
         console.log("back button pressed");
       }}
@@ -86,6 +90,7 @@ export function PropertyListingPage({
         console.log("applied!");
       }}
       onContactAgent={() => console.log("contacting agent!")}
+      onSubmitDraftListing={() => console.log("draft submitted!")}
       className={twMerge("p-5", className)}
     />
   );
@@ -112,10 +117,13 @@ function ListingPageContent({
   listingImageUrls,
   listingStatusText,
   listingStatusPillVariant,
+  shouldDisplayListingStatus,
+  shouldDisplaySubmitDraftButton,
   onBack,
   onBook,
   onApply,
   onContactAgent,
+  onSubmitDraftListing,
   className = "",
 }: {
   streetNumber: string;
@@ -138,10 +146,13 @@ function ListingPageContent({
   listingImageUrls: string[];
   listingStatusText: string;
   listingStatusPillVariant: ListingStatusPillVariant;
+  shouldDisplayListingStatus: boolean;
+  shouldDisplaySubmitDraftButton: boolean;
   onBack: () => void;
   onBook: (index: number) => void;
   onApply: () => void;
   onContactAgent: () => void;
+  onSubmitDraftListing: () => void;
   className?: string;
 }): React.JSX.Element {
   return (
@@ -149,6 +160,7 @@ function ListingPageContent({
       <TopBar
         listingStatusText={listingStatusText}
         listingStatusPillVariant={listingStatusPillVariant}
+        shouldDisplayListingStatus={shouldDisplayListingStatus}
         onBack={onBack}
         className="mb-3"
       />
@@ -177,6 +189,11 @@ function ListingPageContent({
         inspectionBookingUiStateList={inspectionBookingUiStateList}
         onBook={onBook}
         propertyFeatures={propertyFeatures}
+        className="mb-6"
+      />
+      <BottomBar
+        shouldDisplaySubmitDraftButton={shouldDisplaySubmitDraftButton}
+        onSubmitDraftListing={onSubmitDraftListing}
       />
     </div>
   );
@@ -185,11 +202,13 @@ function ListingPageContent({
 function TopBar({
   listingStatusText,
   listingStatusPillVariant,
+  shouldDisplayListingStatus,
   onBack,
   className = "",
 }: {
   listingStatusText: string;
   listingStatusPillVariant: ListingStatusPillVariant;
+  shouldDisplayListingStatus: boolean;
   onBack: () => void;
   className?: string;
 }): React.JSX.Element {
@@ -201,10 +220,12 @@ function TopBar({
         onClick={onBack}
         className="mr-auto"
       />
-      <ListingStatusPill
-        text={listingStatusText}
-        variant={listingStatusPillVariant}
-      />
+      {shouldDisplayListingStatus && (
+        <ListingStatusPill
+          text={listingStatusText}
+          variant={listingStatusPillVariant}
+        />
+      )}
     </div>
   );
 }
@@ -254,9 +275,9 @@ function ListingHero({
         imageUrls={listingImageUrls}
         leftArrowIcon={<LeftCircularArrowIcon />}
         rightArrowIcon={<RightCircularArrowIcon />}
-        className="flex-2 min-w-[500px] mr-6"
+        className="flex-3 min-w-[500px] mr-6"
       />
-      <div className="flex-3 flex flex-col">
+      <div className="flex-4 flex flex-col">
         <ListingSummary
           streetNumber={streetNumber}
           street={street}
@@ -315,6 +336,27 @@ function ListingDetails({
       <div className="flex-1 flex flex-col">
         <PropertyFeatures featuresList={propertyFeatures} />
       </div>
+    </div>
+  );
+}
+
+function BottomBar({
+  shouldDisplaySubmitDraftButton,
+  onSubmitDraftListing,
+  className = "",
+}: {
+  shouldDisplaySubmitDraftButton: boolean;
+  onSubmitDraftListing: () => void;
+  className?: string;
+}): React.JSX.Element {
+  return (
+    <div className={twMerge("flex", className)}>
+      {shouldDisplaySubmitDraftButton && (
+        <SubmitDraftListingButton
+          onClick={onSubmitDraftListing}
+          className="ml-auto"
+        />
+      )}
     </div>
   );
 }
