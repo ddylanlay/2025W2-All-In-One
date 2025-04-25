@@ -9,7 +9,7 @@ export enum ListingStatusPillVariant {
 export function ListingStatusPill({
   variant,
   text,
-  className,
+  className="",
 }: {
   variant: ListingStatusPillVariant;
   text: string;

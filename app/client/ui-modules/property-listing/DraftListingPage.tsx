@@ -28,63 +28,57 @@ export function DraftListingPage({
   className?: string;
 }): React.JSX.Element {
   return (
-    <div className={`flex flex-col ${className}`}>
-      <BackLink
-        label="Back to Properties"
-        backButtonIcon={<BackButtonIcon />}
-        onClick={() => {console.log("back pressed")}}
-      />
-      <DraftListingPageContent
-        streetNumber="86"
-        street="Fury Lane"
-        suburb="Toorak"
-        province="VIC"
-        postcode="3166"
-        summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
-        propertyStatusText="Vacant"
-        propertyStatusPillVariant={PropertyStatusPillVariant.VACANT}
-        propertyDescription="Fake property description"
-        propertyFeatures={[
-          "Pool",
-          "Gym",
-          "Garage",
-          "Pet friendly",
-          "Washing machine",
-        ]}
-        propertyType="Apartment"
-        propertyLandArea="500m²"
-        propertyBathrooms="2"
-        propertyParkingSpaces="2"
-        propertyBedrooms="4"
-        propertyPrice="$1500/mth"
-        inspectionBookingUiStateList={[
-          {
-            date: "21st Jan 2025",
-            startingTime: "11:25pm",
-            endingTime: "11:55pm",
-          },
-          {
-            date: "22nd Jan 2025",
-            startingTime: "1:20pm",
-            endingTime: "1:50pm",
-          },
-        ]}
-        listingImageUrls={[
-          "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
-          "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-          "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
-        ]}
-        listingStatusText="DRAFT LISTING"
-        listingStatusPillVariant={ListingStatusPillVariant.DRAFT}
-        onBook={(index: number) => {
-          console.log(`booking button ${index} pressed`);
-        }}
-        onApply={() => {
-          console.log("applied!");
-        }}
-        onContactAgent={() => console.log("contacting agent!")}
-      />
-    </div>
+    <DraftListingPageContent
+      streetNumber="86"
+      street="Fury Lane"
+      suburb="Toorak"
+      province="VIC"
+      postcode="3166"
+      summaryDescription="The house of your dreams, yadda yadda yes this house is very lorem ipsum."
+      propertyStatusText="Vacant"
+      propertyStatusPillVariant={PropertyStatusPillVariant.VACANT}
+      propertyDescription="Fake property description"
+      propertyFeatures={[
+        "Pool",
+        "Gym",
+        "Garage",
+        "Pet friendly",
+        "Washing machine",
+      ]}
+      propertyType="Apartment"
+      propertyLandArea="500m²"
+      propertyBathrooms="2"
+      propertyParkingSpaces="2"
+      propertyBedrooms="4"
+      propertyPrice="$1500/mth"
+      inspectionBookingUiStateList={[
+        {
+          date: "21st Jan 2025",
+          startingTime: "11:25pm",
+          endingTime: "11:55pm",
+        },
+        {
+          date: "22nd Jan 2025",
+          startingTime: "1:20pm",
+          endingTime: "1:50pm",
+        },
+      ]}
+      listingImageUrls={[
+        "https://cdn.pixabay.com/photo/2018/08/04/11/30/draw-3583548_1280.png",
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+        "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+      ]}
+      listingStatusText="DRAFT LISTING"
+      listingStatusPillVariant={ListingStatusPillVariant.DRAFT}
+      onBook={(index: number) => {
+        console.log(`booking button ${index} pressed`);
+      }}
+      onApply={() => {
+        console.log("applied!");
+      }}
+      onContactAgent={() => console.log("contacting agent!")}
+      className={className}
+    />
   );
 }
 
@@ -141,6 +135,13 @@ function DraftListingPageContent({
 }): React.JSX.Element {
   return (
     <div className={className}>
+      <BackLink
+        label="Back to Properties"
+        backButtonIcon={<BackButtonIcon />}
+        onClick={() => {
+          console.log("back pressed");
+        }}
+      />
       <ListingSummary
         streetNumber={streetNumber}
         street={street}
