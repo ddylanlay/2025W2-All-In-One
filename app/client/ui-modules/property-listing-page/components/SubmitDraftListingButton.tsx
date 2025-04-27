@@ -1,6 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { RoundedButton } from "/app/client/ui-modules/theming/components/common/RoundedButton";
+import { RoundedButton } from "/app/client/ui-modules/common/RoundedButton";
 
 export function SubmitDraftListingButton({
   onClick,
