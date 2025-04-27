@@ -1,5 +1,5 @@
 import React from "react";
-import { SubHeading } from "/app/client/ui-modules/theming/components/SubHeading";
+import { SubHeading } from "/app/client/ui-modules/theming/components/themed/SubHeading";
 import { twMerge } from "tailwind-merge";
 
 export function PropertyFeatures({
