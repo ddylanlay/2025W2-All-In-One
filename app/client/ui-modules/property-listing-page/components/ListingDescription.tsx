@@ -1,6 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { SubHeading } from "/app/client/ui-modules/theming/components/SubHeading";
+import { SubHeading } from "/app/client/ui-modules/theming/components/themed/SubHeading";
 
 export function ListingDescription({
   description,

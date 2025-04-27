@@ -2,11 +2,11 @@ import React from "react";
 import {
   ThemedButton,
   ThemedButtonVariant,
-} from "../../theming/components/ThemedButton";
-import { Divider } from "../../theming/components/Divider";
-import { CalendarIcon } from "../../theming/icons/CalendarIcon";
+} from "/app/client/ui-modules/theming/components/themed/ThemedButton";
+import { Divider } from "/app/client/ui-modules/theming/components/themed/Divider";
+import { CalendarIcon } from "/app/client/ui-modules/theming/icons/CalendarIcon";
 import { twMerge } from "tailwind-merge";
-import { SubHeading } from "/app/client/ui-modules/theming/components/SubHeading";
+import { SubHeading } from "/app/client/ui-modules/theming/components/themed/SubHeading";
 
 export type InspectionBookingListUiState = {
   date: string;

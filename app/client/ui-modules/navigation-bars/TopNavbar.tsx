@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
-import { PropManagerLogoIcon } from "../theming/components/logo/PropManagerLogoIcon";
-import { PropManagerLogoText } from "../theming/components/logo/PropManagerLogoText";
+import { PropManagerLogoIcon } from "../theming/components/themed/logo/PropManagerLogoIcon";
+import { PropManagerLogoText } from "../theming/components/themed/logo/PropManagerLogoText";
 import { Button } from "../theming-shadcn/Button";
 interface TopNavbarProps {
   onSideBarOpened: React.Dispatch<React.SetStateAction<boolean>>;

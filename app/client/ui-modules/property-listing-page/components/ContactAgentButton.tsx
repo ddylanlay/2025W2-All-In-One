@@ -2,7 +2,7 @@ import React from "react";
 import {
   ThemedButton,
   ThemedButtonVariant,
-} from "/app/client/ui-modules/theming/components/ThemedButton";
+} from "/app/client/ui-modules/theming/components/themed/ThemedButton";
 import { twMerge } from "tailwind-merge";
 
 export function ContactAgentButton({
