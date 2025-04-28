@@ -15,8 +15,11 @@ export default function EditDraftListingModal() {
       <ThemedButton variant={ThemedButtonVariant.SECONDARY} onClick={toggle}>
         Cancel
       </ThemedButton>
-      <ThemedButton variant={ThemedButtonVariant.PRIMARY} onClick={toggle}>
+      <ThemedButton variant={ThemedButtonVariant.TERTIARY} onClick={toggle}>
         Save Changes
+      </ThemedButton>
+      <ThemedButton variant={ThemedButtonVariant.PRIMARY} onClick={toggle}>
+        Publish listing
       </ThemedButton>
     </>
   )
