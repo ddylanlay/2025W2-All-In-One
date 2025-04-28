@@ -19,7 +19,7 @@ notifications, agent-dashboard, etc.
     * `common`: Shared components not specific to our figma designs
 * `app/server`: Server code. Code that interacts securely with our data store (DB)
   * `database`: Contains the problem domains and their associated MongoDB definitions (i.e. collection & model definitions)
-  * `methods`: The APIs the server exposes. Called by the frontend API interfaces defined `app/client/apis`.
+  * `methods`: The APIs the server exposes. Called by the frontend API interfaces defined in `app/client/library-modules/apis`.
 * `scripts`: Any shell scripts go here
 * `documentation`: Any documentation for the project goes here
 * `patches`: Patches for dependency installations
