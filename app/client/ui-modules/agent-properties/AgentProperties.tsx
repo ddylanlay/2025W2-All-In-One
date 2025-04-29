@@ -1,24 +1,8 @@
 import React from "react";
 import EditDraftListingModal from "./components/EditDraftListingModal";
-// import { ListingDocument } from "/app/server/database/listing/ListingDocument";
-// import { Meteor } from "meteor/meteor";
-// import { MeteorMethodIdentifier } from "/app/shared/meteor-method-identifier";
 
 export function AgentProperties() {
   const { isOpen, toggle, ModalUI } = EditDraftListingModal();
-  // const [listing, setListing] = useState<any>(null);
-
-  // useEffect(() => {
-  //   Meteor.call(MeteorMethodIdentifier.LISTING_GET_ALL, (error: any, result: ListingDocument[]) => {
-  //     console.log(MeteorMethodIdentifier.LISTING_GET_ALL);
-  //     if (error) {
-  //       console.error("Error fetching listings:", error);
-  //     } else {
-  //       console.log("getting the listing...");
-  //       setListing(result[0]);
-  //     }
-  //   });
-  // }, []);
 
   return (
     <div>
