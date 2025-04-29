@@ -11,13 +11,15 @@ export default function Modal(props: ModalType) {
   return (
     <>
       {props.isOpen && (
-        <div style={styles.modalOverlay}>
-          <div onClick={(e) => e.stopPropagation()} style={styles.modalBox}>
-            <div style={styles.modalContent}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70">
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="flex h-[85vh] w-[70%] flex-col overflow-hidden rounded-xl bg-white p-4">
+            <div className="flex-1 overflow-y-auto pr-4">
               {props.children}
             </div>
 
-            <div style={styles.modalFooter}>
+            <div className="sticky bottom-0 flex justify-end gap-4 border-t border-gray-300 bg-white pt-4 pb-4">
               {props.footer}
             </div>
             
@@ -27,44 +29,3 @@ export default function Modal(props: ModalType) {
     </>
   );
 }
-
-const styles = {
-  modalOverlay: {
-    zIndex: 9999,
-    width: '100vw',
-    height: '100vh',
-    position: 'fixed' as const,
-    top: 0,
-    left: 0,
-    background: 'rgba(0, 0, 0, 0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalBox: {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    background: 'white',
-    width: '70%',
-    height: '85vh', // fixed height relative to viewport
-    padding: '1rem',
-    borderRadius: '1rem',
-    overflow: 'hidden', // keep content inside
-  },
-  modalContent: {
-    flex: 1,
-    overflowY: 'auto' as const,
-    paddingRight: '1rem',
-  },
-  modalFooter: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    gap: '1rem',
-    paddingTop: '1rem',
-    borderTop: '1px solid #ddd',
-    backgroundColor: 'white',
-    position: 'sticky' as const,
-    bottom: 0,
-    paddingBottom: '1rem',
-  },
-};
