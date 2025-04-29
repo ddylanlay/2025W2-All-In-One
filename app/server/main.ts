@@ -22,12 +22,3 @@ async function tempSeedFunction(): Promise<void> {
 
 const insertTask = (taskText: string) =>
   TasksCollection.insertAsync({ text: taskText });
-
-const insertListing = (listingTitle: string, listingDesc: string) => {
-  return ListingCollection.insertAsync({
-    title: listingTitle,
-    description: listingDesc,
-  })
-}
-
-insertListing("Beach House", "A house next to the beach so you can swim.");
