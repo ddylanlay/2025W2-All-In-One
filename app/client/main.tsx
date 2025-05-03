@@ -9,6 +9,7 @@ import { store } from "./store";
 import { DefaultTheme } from "./ui-modules/theming/themes/DefaultTheme";
 import { BottomNavbar } from "./ui-modules/navigation-bars/BottonNavbar";
 import { PropertyListingPage } from "/app/client/ui-modules/property-listing-page/PropertyListingPage";
+import TenantDashboard from "./ui-modules/tenant-dashboard/pages/TenantDashboard";
 
 Meteor.startup(initialiseReactRoot);
 
@@ -29,6 +30,7 @@ function AppRoot(): React.JSX.Element {
               <Route path="/" element={<GuestLandingPage />} />
               <Route path="/test" element={<PropertyListingPage />} />
               <Route path="/home-example" element={<ExampleHomePage />} />
+              <Route path="/tenant-dashboard" element={<TenantDashboard />} />
             </Routes>
             <BottomNavbar />
           </BrowserRouter>
