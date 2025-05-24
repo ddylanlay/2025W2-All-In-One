@@ -82,10 +82,8 @@ export function RoleSideNavBar({
   const profileUser = useAppSelector((state) => state.profile.data);
   const currentUser = useAppSelector((state) => state.currentUser.currentUser);
   const firstName = profileUser?.firstName || "Unknown";
-  const lastName = currentUser?.lastName || "User";
-
-  // Get the profile picture URL from blob storage
-  const profilePicture = profileUser?.profilePicture || "/images/default-avatar.png";
+  const lastName = profileUser?.lastName || "User";
+  const profilePicture = profileUser?.profilePicture || "/images/test-image.png"
 
   useEffect(() => {
       const loadProfile = async () => {
