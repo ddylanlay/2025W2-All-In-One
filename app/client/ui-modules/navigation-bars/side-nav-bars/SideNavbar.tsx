@@ -76,10 +76,17 @@ export function RoleSideNavBar({
   dashboardLinks = [],
   settingsLinks = []
 }: RoleSideNavBarProps) {
-  const currentUser = useAppSelector((state) => state.currentUser.currentUser);
-  const firstName = currentUser?.firstName || "Unknown";
-  const lastName = currentUser?.lastName || "User";
-  const title = "Agent";
+  const profileUser = useAppSelector((state) => state.profile.data);
+  const firstName = profileUser?.firstName || "Unknown";
+  const lastName = profileUser?.lastName || "User";
+
+  const getUserRole = () => {
+    if (!profileUser) return "Guest";
+    if ('agentId' in profileUser) return "Agent";
+    if ('landlordId' in profileUser) return "Landlord";
+    if ('tenantId' in profileUser) return "Tenant";
+    return "Guest";
+  };
   return (
     <>
       <SidebarContainer isOpen={isOpen}>
@@ -97,7 +104,7 @@ export function RoleSideNavBar({
           }
         />
         <SidebarFooter>
-          <ProfileFooter firstName={firstName} lastName={lastName} title={title} />
+          <ProfileFooter firstName={firstName} lastName={lastName} title={getUserRole()} />
         </SidebarFooter>
       </SidebarContainer>
 

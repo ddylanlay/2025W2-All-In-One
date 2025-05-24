@@ -20,8 +20,6 @@ export async function apiGetLandlord(userId: string): Promise<ApiLandlord> {
 export async function apiGetAllLandlords(): Promise<ApiLandlord[]> {
   return await Meteor.callAsync(MeteorMethodIdentifier.LANDLORD_GET_ALL)
 }
-    return await Meteor.callAsync(MeteorMethodIdentifier.LANDLORD_GET, userId);
-}
 
 export async function apiGetProfileData(
     profileId: string
