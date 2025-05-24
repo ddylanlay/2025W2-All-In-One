@@ -102,10 +102,10 @@ export function RoleSideNavBar({
 
 
   const getUserRole = () => {
-    if (!profileUser) return "Guest";
-    if ('agentId' in profileUser) return "Agent";
-    if ('landlordId' in profileUser) return "Landlord";
-    if ('tenantId' in profileUser) return "Tenant";
+    if (!currentUser) return "Guest";
+    if ('agentId' in currentUser) return "Agent";
+    if ('landlordId' in currentUser) return "Landlord";
+    if ('tenantId' in currentUser) return "Tenant";
     return "Guest";
   };
 

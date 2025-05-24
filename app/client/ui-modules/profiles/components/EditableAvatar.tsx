@@ -43,7 +43,7 @@ export function EditableAvatar({
     if (file && onImageChange) {
       onImageChange(file);
     }
-  };
+  };``
 
   return (
     <div className="flex justify-center mb-6">
