@@ -122,7 +122,6 @@ async function tempSeedUserAndRoleData(): Promise<void> {
 }
 
 async function tempSeedPropertyData(): Promise<void> {
-<<<<<<< HEAD
   console.log("Seeding property data...");
   if ((await PropertyCollection.find().countAsync()) === 0) {
     await PropertyStatusCollection.insertAsync({
@@ -231,7 +230,6 @@ async function tempSeedTaskData(): Promise<void> {
       priority: "Medium",
     });
   }
-=======
     console.log("Seeding property data...");
     if ((await PropertyCollection.find().countAsync()) === 0) {
         PropertyStatusCollection.insertAsync({
@@ -302,46 +300,7 @@ async function tempSeedTaskData(): Promise<void> {
         ListingStatusCollection.insertAsync({ _id: "1", name: "Draft" });
     }
 }
-// This function is used to seed the database with initial task data
-async function tempSeedTaskData(): Promise<void> {
-    if ((await TaskCollection.find().countAsync()) === 0) {
-        TaskStatusCollection.insertAsync({
-            _id: "1",
-            name: "Not Started",
-        });
 
-        TaskStatusCollection.insertAsync({
-            _id: "2",
-            name: "In Progress",
-        });
-
-        TaskStatusCollection.insertAsync({
-            _id: "3",
-            name: "Completed",
-        });
-
-        TaskCollection.insertAsync({
-            _id: "1",
-            name: "Initial listing meeting",
-            taskStatus: TaskStatus.NOTSTARTED,
-            createdDate: new Date("2025-04-12T10:00:00Z"),
-            dueDate: new Date("2025-04-19T10:00:00Z"),
-            description:
-                "Meet with the client to discuss the property listing process and gather necessary information.",
-            priority: "High",
-        });
-        TaskCollection.insertAsync({
-            _id: "2",
-            name: "Follow-up with client",
-            taskStatus: TaskStatus.INPROGRESS,
-            createdDate: new Date("2025-04-20T10:00:00Z"),
-            dueDate: new Date("2025-04-27T10:00:00Z"),
-            description:
-                "Check in with the client to provide updates and address any questions.",
-            priority: "Medium",
-        });
-    }
-}
 async function tempSeedProfileData(): Promise<void> {
     if ((await ProfileCollection.find().countAsync()) === 0) {
         ProfileCollection.insertAsync({
@@ -363,7 +322,6 @@ async function tempSeedProfileData(): Promise<void> {
             carPlate: "DXW003",
         });
     }
->>>>>>> 139e67b4359fa21551943c4546fa43e811db27f2
 }
 
   async function tempSeedPropertyStatusData(): Promise<void> {

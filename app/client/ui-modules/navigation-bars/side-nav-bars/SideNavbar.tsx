@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
 import {
   SidebarContainer,
@@ -11,8 +11,7 @@ import { NavLinkItem } from "./components/NavBarLink";
 import { NavBarLinks } from "./components/NavBarLink";
 import { NavGroup } from "./components/NavGroup";
 import { ProfileFooter } from "./components/ProfileFooter";
-import { useAppSelector } from "/app/client/store";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { useAppSelector, useAppDispatch } from "/app/client/store";
 
 interface SideNavBarProps {
   isOpen: boolean;
@@ -77,10 +76,13 @@ export function RoleSideNavBar({
   dashboardLinks = [],
   settingsLinks = []
 }: RoleSideNavBarProps) {
+  const dispatch = useAppDispatch();
   const profileUser = useAppSelector((state) => state.profile.data);
   const firstName = profileUser?.firstName || "Unknown";
-  const lastName = profileUser?.lastName || "User";
+  const lastName = currentUser?.lastName || "User";
+
   const profilePicture = profileUser?.profilePicture;
+
 
   const getUserRole = () => {
     if (!profileUser) return "Guest";
