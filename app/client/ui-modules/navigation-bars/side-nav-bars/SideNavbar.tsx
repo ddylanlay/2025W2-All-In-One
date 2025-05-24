@@ -12,6 +12,8 @@ import { NavBarLinks } from "./components/NavBarLink";
 import { NavGroup } from "./components/NavGroup";
 import { ProfileFooter } from "./components/ProfileFooter";
 import { useAppSelector, useAppDispatch } from "/app/client/store";
+import { apiGetProfileData } from "/app/client/library-modules/apis/user/user-role-api";
+import { setProfileData } from "/app/client/ui-modules/profiles/state/profile-slice";
 
 interface SideNavBarProps {
   isOpen: boolean;
@@ -78,10 +80,27 @@ export function RoleSideNavBar({
 }: RoleSideNavBarProps) {
   const dispatch = useAppDispatch();
   const profileUser = useAppSelector((state) => state.profile.data);
+  const currentUser = useAppSelector((state) => state.currentUser.currentUser);
   const firstName = profileUser?.firstName || "Unknown";
   const lastName = currentUser?.lastName || "User";
 
-  const profilePicture = profileUser?.profilePicture;
+  // Get the profile picture URL from blob storage
+  const profilePicture = profileUser?.profilePicture || "/images/default-avatar.png";
+
+  useEffect(() => {
+      const loadProfile = async () => {
+        try {
+          if (!currentUser?.profileDataId)
+            throw new Error("User is not logged in");
+
+          const data = await apiGetProfileData(currentUser.profileDataId);
+          dispatch(setProfileData(data)); //Updating redux store
+        } catch (error) {
+          console.error("Failed to retrieve profile:", error);
+        }
+      };
+      loadProfile();
+    }, [currentUser?.profileDataId]);
 
 
   const getUserRole = () => {
