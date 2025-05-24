@@ -12,6 +12,7 @@ import { NavBarLinks } from "./components/NavBarLink";
 import { NavGroup } from "./components/NavGroup";
 import { ProfileFooter } from "./components/ProfileFooter";
 import { useAppSelector } from "/app/client/store";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 
 interface SideNavBarProps {
   isOpen: boolean;
@@ -79,6 +80,7 @@ export function RoleSideNavBar({
   const profileUser = useAppSelector((state) => state.profile.data);
   const firstName = profileUser?.firstName || "Unknown";
   const lastName = profileUser?.lastName || "User";
+  const profilePicture = profileUser?.profilePicture;
 
   const getUserRole = () => {
     if (!profileUser) return "Guest";
@@ -87,6 +89,7 @@ export function RoleSideNavBar({
     if ('tenantId' in profileUser) return "Tenant";
     return "Guest";
   };
+
   return (
     <>
       <SidebarContainer isOpen={isOpen}>
@@ -104,7 +107,14 @@ export function RoleSideNavBar({
           }
         />
         <SidebarFooter>
-          <ProfileFooter firstName={firstName} lastName={lastName} title={getUserRole()} />
+          <div className="flex items-center gap-3 p-4 border-t">
+            <ProfileFooter
+              firstName={firstName}
+              lastName={lastName}
+              title={getUserRole()}
+              profileImage={profilePicture}
+            />
+          </div>
         </SidebarFooter>
       </SidebarContainer>
 
