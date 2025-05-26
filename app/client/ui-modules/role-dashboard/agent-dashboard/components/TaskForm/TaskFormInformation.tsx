@@ -21,7 +21,6 @@ import { TaskFormSchemaType } from "../TaskFormSchema";
 import { FormHeading } from "../../../../property-form-agent/components/FormHeading";
 import { Landlord } from "/app/client/library-modules/domain-models/user/Landlord";
 import { Property } from "/app/client/library-modules/domain-models/property/Property";
-import { RadioGroup, RadioGroupItem } from "../../../../theming-shadcn/RadioGroup";
 export default function FormBasicInformation({
   form,
   landlords,
@@ -70,74 +69,14 @@ export default function FormBasicInformation({
         )}
       />
       <div> </div>
-      <FormField
-        control={form.control}
-        name="task_type"
-        render={({ field }) => (
-          <FormItem className="py-2">
-            <FormLabel>Task Type</FormLabel>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select task type" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent className="bg-white">
-                <SelectItem value="house">Inspection</SelectItem>
-                <SelectItem value="apartment">Maintenance</SelectItem>
-                <SelectItem value="apartment">Admin</SelectItem>
-                <SelectItem value="apartment">Document signing</SelectItem>
-                <SelectItem value="apartment">Cleaning</SelectItem>
-                <SelectItem value="apartment">Online Meeting</SelectItem>
-                <SelectItem value="apartment">In Person Meeting</SelectItem>
-              </SelectContent>
-            </Select>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4">
-         
         </div>
       </div>
 
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-6">
-          <FormField
-            control={form.control}
-            name="task_priority"
-            render={({ field }) => (
-              <FormItem className="space-y-3 py-2">
-                <FormLabel>Task Priority</FormLabel>
-                <FormControl>
-                  <RadioGroup
-                    onValueChange={field.onChange}
-                    className="flex flex-col space-y-2"
-                  >
-                    {[
-                      ["High", "High"],
-                      ["Medium", "Medium"],
-                      ["Low", "Low"],
-                    ].map((option, index) => (
-                      <FormItem
-                        className="flex items-center space-x-3 space-y-0"
-                        key={index}
-                      >
-                        <FormControl>
-                          <RadioGroupItem value={option[1]} />
-                        </FormControl>
-                        <FormLabel className="font-normal">
-                          {option[0]}
-                        </FormLabel>
-                      </FormItem>
-                    ))}
-                  </RadioGroup>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+
           <div className="grid grid-cols-12 gap-4">
             <FormField
               control={form.control}
