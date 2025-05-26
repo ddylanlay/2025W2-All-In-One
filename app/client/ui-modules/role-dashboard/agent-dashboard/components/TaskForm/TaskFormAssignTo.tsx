@@ -16,40 +16,48 @@ import {
 } from "../../../../theming-shadcn/Select";
 import { UseFormReturn } from "react-hook-form";
 import { TaskFormSchemaType } from "../TaskFormSchema";
-
-export default function TaskFormTaskType({
+import { Landlord } from "/app/client/library-modules/domain-models/user/Landlord";
+export default function TaskFormAssignTo({
   form,
+  landlords,
 }: {
   form: UseFormReturn<TaskFormSchemaType>;
+  landlords: Landlord[];
 }): React.JSX.Element {
   return (
     <div className="border border-(--divider-color) w-full p-7 rounded-md mb-3">
-        <FormField
-          control={form.control}
-          name="task_type"
-          render={({ field }) => (
-            <FormItem className="py-2">
-              <FormLabel>Task Type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select task type" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent className="bg-white">
-                  <SelectItem value="house">Inspection</SelectItem>
-                  <SelectItem value="apartment">Maintenance</SelectItem>
-                  <SelectItem value="apartment">Admin</SelectItem>
-                  <SelectItem value="apartment">Document signing</SelectItem>
-                  <SelectItem value="apartment">Cleaning</SelectItem>
-                  <SelectItem value="apartment">Online Meeting</SelectItem>
-                  <SelectItem value="apartment">In Person Meeting</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+           <FormField
+        control={form.control}
+        name="landlord"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Assign To </FormLabel>
+            <Select
+              onValueChange={(val) => field.onChange(val)}
+              defaultValue={
+                field.value !== undefined ? String(field.value) : undefined
+              }
+            >
+              <FormControl>
+                <SelectTrigger>
+                  <SelectValue placeholder="Assign a tenant, landlord or yourself" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent className="bg-white">
+                {landlords.map((landlord) => (
+                  <SelectItem
+                    key={String(landlord.landlordId)}
+                    value={String(landlord.landlordId)}
+                  >
+                    {landlord.firstName} {landlord.lastName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </div>
-  );
-}
+    );
+  }
