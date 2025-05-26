@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "../../../theming-shadcn/Select";
 import { Input } from "../../../theming-shadcn/Input";
+import { format } from "date-fns";
 import { UseFormReturn } from "react-hook-form";
 import { TaskFormSchemaType } from "./TaskFormSchema";
 import { FormHeading } from "../../../property-form-agent/components/FormHeading";
@@ -22,13 +23,13 @@ import { Landlord } from "/app/client/library-modules/domain-models/user/Landlor
 import { Property } from "/app/client/library-modules/domain-models/property/Property";
 import { Calendar } from "../../../theming-shadcn/Calendar";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { Switch } from "../../theming-shadcn/Switch";
-import { Button } from "../../theming-shadcn/Button";
+import { Button } from "../../../theming-shadcn/Button";
+import { RadioGroup, RadioGroupItem } from "../../../theming-shadcn/RadioGroup";
 import {
-  RadioGroup,
-  RadioGroupItem,
-} from "../../../theming-shadcn/RadioGroup";
-import { Popover, PopoverContent, PopoverTrigger } from "../../../theming-shadcn/Popover";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../../theming-shadcn/Popover";
 export default function FormBasicInformation({
   form,
   landlords,
@@ -52,7 +53,9 @@ export default function FormBasicInformation({
             <FormLabel>Assign To </FormLabel>
             <Select
               onValueChange={(val) => field.onChange(val)}
-              defaultValue={field.value !== undefined ? String(field.value) : undefined}
+              defaultValue={
+                field.value !== undefined ? String(field.value) : undefined
+              }
             >
               <FormControl>
                 <SelectTrigger>
@@ -83,7 +86,9 @@ export default function FormBasicInformation({
             <FormLabel>Property</FormLabel>
             <Select
               onValueChange={field.onChange}
-              defaultValue={field.value !== undefined ? String(field.value) : undefined}
+              defaultValue={
+                field.value !== undefined ? String(field.value) : undefined
+              }
             >
               <FormControl>
                 <SelectTrigger>
@@ -96,7 +101,8 @@ export default function FormBasicInformation({
                     key={property.propertyId}
                     value={property.propertyId}
                   >
-                    {property.streetnumber} {property.streetname} {property.postcode}
+                    {property.streetnumber} {property.streetname}{" "}
+                    {property.postcode}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -134,45 +140,47 @@ export default function FormBasicInformation({
       />
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4">
-        <FormField
-        control={form.control}
-        name="task_duedate"
-        render={({ field }) => (
-          <FormItem className="flex flex-col py-2">
-            <FormLabel>Task Due</FormLabel>
-            <Popover>
-              <PopoverTrigger asChild>
-                <FormControl>
-                  <Button
-                    variant={"outline"}
-                    className={`w-[240px] pl-3 text-left font-normal border-[--divider-color] ${!field.value ? "text-muted-foreground" : ""}`}
+          <FormField
+            control={form.control}
+            name="task_duedate"
+            render={({ field }) => (
+              <FormItem className="flex flex-col py-2">
+                <FormLabel>Task Due</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={`w-[240px] pl-3 text-left font-normal border-[--divider-color] ${
+                          !field.value ? "text-muted-foreground" : ""
+                        }`}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent
+                    className="w-auto p-0 border-(--divider-color) bg-white"
+                    align="start"
                   >
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span>Pick a date</span>
-                    )}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                  </Button>
-                </FormControl>
-              </PopoverTrigger>
-              <PopoverContent
-                className="w-auto p-0 border-(--divider-color) bg-white"
-                align="start"
-              >
-                <Calendar
-                  mode="single"
-                  selected={field.value}
-                  onSelect={field.onChange}
-                  initialFocus
-                />
-              </PopoverContent>
-            </Popover>
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
 
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
       </div>
 
@@ -186,59 +194,6 @@ export default function FormBasicInformation({
                 <FormLabel>City</FormLabel>
                 <FormControl>
                   <Input placeholder="Melbourne" type="text" {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="col-span-6">
-          <FormField
-            control={form.control}
-            name="state"
-            render={({ field }) => (
-              <FormItem className="py-2">
-                <FormLabel>State</FormLabel>
-                <FormControl>
-                  <Input placeholder="VIC" type="text" {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-6">
-          <FormField
-            control={form.control}
-            name="postal_code"
-            render={({ field }) => (
-              <FormItem className="py-2">
-                <FormLabel>Postal Code</FormLabel>
-                <FormControl>
-                  <Input placeholder="3000" type="" {...field} />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
-        <div className="col-span-6">
-          <FormField
-            control={form.control}
-            name="apartment_number"
-            render={({ field }) => (
-              <FormItem className="py-2">
-                <FormLabel>Unit/Apt # (Optional)</FormLabel>
-                <FormControl>
-                  <Input placeholder="Apt 4B" type="" {...field} />
                 </FormControl>
 
                 <FormMessage />
