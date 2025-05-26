@@ -10,15 +10,9 @@ import {
 import { RadioGroup, RadioGroupItem } from "../../../../theming-shadcn/RadioGroup";
 import { UseFormReturn } from "react-hook-form";
 import { TaskFormSchemaType } from "../TaskFormSchema";
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../../../theming-shadcn/Form";
 
-export default function TaskFormTaskType({
+
+export default function TaskFormTaskPriority({
   form,
 }: {
   form: UseFormReturn<TaskFormSchemaType>;

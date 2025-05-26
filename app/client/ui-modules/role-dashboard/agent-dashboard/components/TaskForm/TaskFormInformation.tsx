@@ -36,38 +36,7 @@ export default function FormBasicInformation({
         title="Add a New Task"
         subtitle="Create a new task with details and assign it to yourself, a landlord, or a tenant."
       ></FormHeading>
-      <FormField
-        control={form.control}
-        name="landlord"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Assign To </FormLabel>
-            <Select
-              onValueChange={(val) => field.onChange(val)}
-              defaultValue={
-                field.value !== undefined ? String(field.value) : undefined
-              }
-            >
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue placeholder="Assign a tenant, landlord or yourself" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent className="bg-white">
-                {landlords.map((landlord) => (
-                  <SelectItem
-                    key={String(landlord.landlordId)}
-                    value={String(landlord.landlordId)}
-                  >
-                    {landlord.firstName} {landlord.lastName}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
+      
       <div> </div>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4">
