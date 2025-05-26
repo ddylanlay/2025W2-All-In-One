@@ -5,6 +5,8 @@ export const taskFormSchema = z.object({
    property: z.string().min(1, { message: "Please select a relevant property" }),
    task_type: z.string().min(1, { message: "Please select a task type" }),
    task_duedate: z.coerce.date(),
+   task_priority: z.string().min(1, { message: "Please select a task priority" }),
+   task_description: z.string().min(1, { message: "Please describe the task" }),
   // address: z.string().min(1, { message: "Please fill out field" }),
   // city: z.string().min(1, { message: "Please fill out field" }),
   // state: z.string().min(1, { message: "Please fill out field" }),

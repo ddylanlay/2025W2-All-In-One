@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "../../../theming-shadcn/Select";
 import { Input } from "../../../theming-shadcn/Input";
+import { Textarea } from "../../../theming-shadcn/Textarea";
 import { format } from "date-fns";
 import { UseFormReturn } from "react-hook-form";
 import { TaskFormSchemaType } from "./TaskFormSchema";
@@ -176,7 +177,6 @@ export default function FormBasicInformation({
                     />
                   </PopoverContent>
                 </Popover>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -186,39 +186,60 @@ export default function FormBasicInformation({
 
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-6">
-        <FormField
-         control={form.control}
-         name="task_priority"
-         render={({ field }) => (
-           <FormItem className="space-y-3 py-2">
-             <FormLabel>Task Priority</FormLabel>
-             <FormControl>
-               <RadioGroup
-                 onValueChange={field.onChange}
-                 className="flex flex-col space-y-2"
-               >
-                 {[
-                   ["High", "High"],
-                   ["Medium", "Medium"],
-                   ["Low", "Low"],
-                 ].map((option, index) => (
-                   <FormItem
-                     className="flex items-center space-x-3 space-y-0"
-                     key={index}
-                   >
-                     <FormControl>
-                       <RadioGroupItem value={option[1]} />
-                     </FormControl>
-                     <FormLabel className="font-normal">{option[0]}</FormLabel>
-                   </FormItem>
-                 ))}
-               </RadioGroup>
-             </FormControl>
- 
-             <FormMessage />
-           </FormItem>
-         )}
-       />
+          <FormField
+            control={form.control}
+            name="task_priority"
+            render={({ field }) => (
+              <FormItem className="space-y-3 py-2">
+                <FormLabel>Task Priority</FormLabel>
+                <FormControl>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    className="flex flex-col space-y-2"
+                  >
+                    {[
+                      ["High", "High"],
+                      ["Medium", "Medium"],
+                      ["Low", "Low"],
+                    ].map((option, index) => (
+                      <FormItem
+                        className="flex items-center space-x-3 space-y-0"
+                        key={index}
+                      >
+                        <FormControl>
+                          <RadioGroupItem value={option[1]} />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          {option[0]}
+                        </FormLabel>
+                      </FormItem>
+                    ))}
+                  </RadioGroup>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="grid grid-cols-12 gap-4">
+            <FormField
+              control={form.control}
+              name="task_description"
+              render={({ field }) => (
+                <FormItem className="py-2">
+                  <FormLabel>Property Description</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Describe the property in detail..."
+                      className="resize-none"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
       </div>
     </div>
