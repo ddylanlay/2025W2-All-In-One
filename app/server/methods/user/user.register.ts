@@ -11,8 +11,8 @@ type RegisterPayload = {
   lastName: string;
   accountType: Role;
   agentCode?: string;
+  task_ids?: string[];
 };
-
 
 export const userRegisterMethod = {
   [MeteorMethodIdentifier.USER_REGISTER]: async (data: RegisterPayload) => {
@@ -29,7 +29,6 @@ export const userRegisterMethod = {
   },
 };
 
-
 // -- Helper Methods --
 
 function validatePayload(data: RegisterPayload) {
@@ -40,23 +39,36 @@ function validatePayload(data: RegisterPayload) {
     lastName: String,
     accountType: Match.OneOf(...Object.values(Role)),
     agentCode: Match.Maybe(String),
+    task_ids: Match.Maybe([String]),
   });
 
   if (data.password.length < 8) {
-    throw new Meteor.Error("weak-password", "Password must be at least 8 characters long.");
+    throw new Meteor.Error(
+      "weak-password",
+      "Password must be at least 8 characters long."
+    );
   }
 
   if (data.accountType === Role.AGENT) {
     if (!data.agentCode?.trim()) {
-      throw new Meteor.Error("missing-code", "Agent verification code is required.");
+      throw new Meteor.Error(
+        "missing-code",
+        "Agent verification code is required."
+      );
     }
     if (data.agentCode !== "AGENT123") {
-      throw new Meteor.Error("invalid-code", "Invalid agent verification code.");
+      throw new Meteor.Error(
+        "invalid-code",
+        "Invalid agent verification code."
+      );
     }
   }
 }
 
-async function createAuthUser(email: string, password: string): Promise<string> {
+async function createAuthUser(
+  email: string,
+  password: string
+): Promise<string> {
   try {
     return await Accounts.createUserAsync({ email, password });
   } catch (e: any) {
@@ -67,7 +79,10 @@ async function createAuthUser(email: string, password: string): Promise<string> 
       throw new Meteor.Error(403, "An account with this email already exists.");
     }
 
-    throw new Meteor.Error("registration-failed", "Something went wrong during registration.");
+    throw new Meteor.Error(
+      "registration-failed",
+      "Something went wrong during registration."
+    );
   }
 }
 
@@ -78,12 +93,22 @@ async function createUserAccount(userId: string, role: Role): Promise<void> {
   });
 }
 
-async function createRoleSpecificRecord(userId: string, data: RegisterPayload): Promise<void> {
+async function createRoleSpecificRecord(
+  userId: string,
+  data: RegisterPayload
+): Promise<void> {
+  const profileDataId = await Meteor.callAsync(
+    // creates a profile in the collection, returns id
+    MeteorMethodIdentifier.PROFILE_INSERT,
+    {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+    }
+  );
   const common = {
     userAccountId: userId,
-    firstName: data.firstName,
-    lastName: data.lastName,
-    email: data.email,
+    profileDataId: profileDataId,
     createdAt: new Date(),
   };
 
