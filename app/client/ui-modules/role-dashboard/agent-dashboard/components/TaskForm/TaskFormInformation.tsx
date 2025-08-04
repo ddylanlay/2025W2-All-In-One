@@ -42,9 +42,7 @@ export function TaskFormInformation({
         <TaskFormTaskType form={form} />
         <div className="flex justify-end mt-5">
           <Button type="submit">
-            {mode === TaskFormMode.CREATE
-              ? "Create Listing"
-              : "Save Changes"}
+            {mode === TaskFormMode.CREATE ? "Create Task" : "Save Changes"}
           </Button>
         </div>
       </form>
@@ -54,22 +52,9 @@ export function TaskFormInformation({
 
 export const formDefaultValues: z.infer<typeof formSchema> = {
   landlord: "",
-  property_type: "",
-  address_number: "",
-  address: "",
-  suburb: "",
-  city: "",
-  state: "",
-  postal_code: "",
-  apartment_number: "",
-  monthly_rent: 0,
-  bedroom_number: 0,
-  bathroom_number: 0,
-  space: 0,
-  description: "",
-  property_feature_ids: [],
-  images: [],
-  available_dates: new Date(),
-  lease_term: "",
-  show_contact_boolean: false,
+  task_duedate: new Date(),
+  task_description: "",
+  task_priority: "",
+  property: "",
+  task_type: "",
 };
