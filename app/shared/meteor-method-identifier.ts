@@ -1,5 +1,9 @@
+import { TaskStatus } from "./task-status-identifier";
+
 export enum MeteorMethodIdentifier {
   TASK_INSERT = "tasks.insert",
+  TASK_DATA_UPDATE = "tasks.update",
+  INSERT_TASK_LISTING = "tasks.insertListing",
   TASK_GET_ALL = "tasks.getAll",
   TASK_GET = "tasks.getOne",
   TASK_GET_MULTIPLE = "tasks.getMultiple",
