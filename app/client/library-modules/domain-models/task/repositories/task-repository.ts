@@ -8,3 +8,9 @@ export async function getTaskById(id: string): Promise<Task> {
 
   return mappedTask;
 }
+
+export async function insertTask(
+  taskId: string,
+): Promise<string> {
+  return await apiInsertTaskListing(taskId);
+}
