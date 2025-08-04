@@ -1,55 +1,75 @@
 "use client";
+
 import React from "react";
-import { FormHeading } from "../../../../property-form-agent/components/FormHeading";
-import TaskFormPropertySelection from "./TaskFormProperty";
-import TaskFormDescription from "./TaskFormDescription";
-import TaskFormDateSelection from "./TaskFormDate";
-import TaskFormTaskType from "./TaskFormTaskType";
-import TaskFormTaskPriority from "./TaskFormPriority";
+import { UseFormReturn } from "react-hook-form";
+import * as z from "zod";
+import { Form } from "../../theming-shadcn/Form";
 import TaskFormAssignTo from "./TaskFormAssignTo";
+import TaskFormDate from "./TaskFormDate";
+import TaskFormDescription from "./TaskFormDescription";
+import TaskFormPriority from "./TaskFormPriority";
+import TaskFormProperty from "./TaskFormProperty";
+import TaskFormTaskType from "./TaskFormTaskType";
 
-export default function TaskFormInformation(): React.JSX.Element {
+import FormPropertyDetails from "./FormPropertyDetails";
+import FormPropertyImages from "./FormPropertyImages";
+import FormListingOptions from "./FormListingOptions";
+import { formSchema, FormSchemaType } from "./FormSchema";
+import { Button } from "../../theming-shadcn/Button";
+import { Landlord } from "/app/client/library-modules/domain-models/user/Landlord";
+import { TaskFormMode } from "../enum/TaskFormMode";
+
+export function TaskFormInformation({
+  form,
+  onSubmit,
+  landlords,
+  date,
+  mode = PropertyFormMode.CREATE,
+}: {
+  form: UseFormReturn<FormSchemaType>;
+  onSubmit: (values: FormSchemaType) => void;
+  landlords: (Landlord & { firstName: string; lastName: string })[];
+  mode: TaskFormMode;
+}) {
   return (
-    <div className="border border-(--divider-color) w-full p-7 rounded-md mb-3">
-      {/* Form Heading */}
-      <FormHeading
-        title="Add a New Task"
-        subtitle="Create a new task with details and assign it to yourself, a landlord, or a tenant."
-      />
-
-      {/* Property Selection */}
-      <div className="grid grid-cols-12 gap-4 mb-4">
-        <div className="col-span-12">
-          <TaskFormPropertySelection />
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <TaskFormAssignTo form={form} landlords={landlords} />
+        <TaskFormDate form={form} />
+        <TaskFormDescription form={form} />
+        <TaskFormPriority form={form} />
+        <TaskFormProperty form={form} />
+        <TaskFormTaskType form={form} />
+        <div className="flex justify-end mt-5">
+          <Button type="submit">
+            {mode === TaskFormMode.CREATE
+              ? "Create Listing"
+              : "Save Changes"}
+          </Button>
         </div>
-      </div>
-
-      {/* Task Details */}
-      <div className="grid grid-cols-12 gap-4 mb-4">
-        <div className="col-span-6">
-          <TaskFormTaskType />
-        </div>
-        <div className="col-span-6">
-          <TaskFormTaskPriority />
-        </div>
-      </div>
-
-      {/* Date Selection */}
-      <div className="grid grid-cols-12 gap-4 mb-4">
-        <div className="col-span-6">
-          <TaskFormDateSelection />
-        </div>
-        <div className="col-span-6">
-          <TaskFormAssignTo />
-        </div>
-      </div>
-
-      {/* Task Description */}
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12">
-          <TaskFormDescription />
-        </div>
-      </div>
-    </div>
+      </form>
+    </Form>
   );
 }
+
+export const formDefaultValues: z.infer<typeof formSchema> = {
+  landlord: "",
+  property_type: "",
+  address_number: "",
+  address: "",
+  suburb: "",
+  city: "",
+  state: "",
+  postal_code: "",
+  apartment_number: "",
+  monthly_rent: 0,
+  bedroom_number: 0,
+  bathroom_number: 0,
+  space: 0,
+  description: "",
+  property_feature_ids: [],
+  images: [],
+  available_dates: new Date(),
+  lease_term: "",
+  show_contact_boolean: false,
+};
