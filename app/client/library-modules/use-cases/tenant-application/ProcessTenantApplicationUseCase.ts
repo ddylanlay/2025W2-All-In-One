@@ -1,20 +1,10 @@
 // app/client/library-modules/use-cases/tenant-application/ProcessTenantApplicationWorkflowUseCase.ts
 import { updateTenantApplicationStatus } from "/app/client/library-modules/domain-models/tenant-application/repositories/tenant-application-repository";
-import { apiCreateTaskForLandlord} from "/app/client/library-modules/apis/task/task-api"
+import { createTaskForLandlord } from "/app/client/library-modules/domain-models/task/repositories/task-repository"
 import { TaskPriority } from "/app/shared/task-priority-identifier";
 import { Role } from "/app/shared/user-role-identifier";
 import { TenantApplicationStatus } from "/app/shared/api-models/tenant-application/TenantApplicationStatus";
 import { TenantApplication } from "/app/client/ui-modules/tenant-selection/types/TenantApplication";
-
-export async function acceptTenantApplicationUseCase(applicationId: string): Promise<{ applicationId: string; status: TenantApplicationStatus }> {
-  await updateTenantApplicationStatus([applicationId], TenantApplicationStatus.ACCEPTED, 1);
-  return { applicationId, status: TenantApplicationStatus.ACCEPTED };
-}
-
-export async function rejectTenantApplicationUseCase(applicationId: string): Promise<{ applicationId: string; status: TenantApplicationStatus }> {
-  await updateTenantApplicationStatus([applicationId], TenantApplicationStatus.REJECTED, 1);
-  return { applicationId, status: TenantApplicationStatus.REJECTED };
-}
 
 export async function sendAcceptedApplicationsToLandlordUseCase(
   propertyId: string,
@@ -42,11 +32,10 @@ export async function sendAcceptedApplicationsToLandlordUseCase(
   // Create task for landlord
   const taskName = `Review ${acceptedApplications.length} Tenant Application(s)`;
   const taskDescription = `Review ${acceptedApplications.length} accepted tenant application(s) for property at ${streetNumber} ${street}, ${suburb}, ${province} ${postcode}. Applicants: ${acceptedApplications.map((app: TenantApplication) => app.name).join(', ')}`;
-  const dueDate = new Date();
-  dueDate.setDate(dueDate.getDate() + 7);
+  const dueDate = calculateDueDate(7);
 
   // Create task for landlord
-  const taskResult = await apiCreateTaskForLandlord({
+  const taskResult = await createTaskForLandlord({
     name: taskName,
     description: taskDescription,
     dueDate: dueDate,

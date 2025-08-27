@@ -30,7 +30,7 @@ import {
 	AgentCollection,
 	UserAccountCollection,
 } from "/app/server/database/user/user-collections";
-import { TenantApplicationCollection } from "./database/tenant/collections/TenantApplicationCollection";
+import { TenantApplicationCollection } from "./database/tenant-application/collections/TenantApplicationCollection";
 import { TenantCollection } from "./database/user/user-collections";
 import { Role } from "../shared/user-role-identifier";
 import { TaskStatus } from "../shared/task-status-identifier";

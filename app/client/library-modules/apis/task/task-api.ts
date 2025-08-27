@@ -28,7 +28,6 @@ export async function apiCreateTaskForAgent(taskData: {
   }
 }
 
-
 // will update to a universal role apiCreateTask
 export async function apiCreateTaskForLandlord(taskData: {
   name: string;
@@ -38,7 +37,6 @@ export async function apiCreateTaskForLandlord(taskData: {
   userId: string;
   propertyAddress: string;
   propertyId: string;
-  userType: Role;
 }): Promise<string> {
   try {
     const result = await Meteor.callAsync(MeteorMethodIdentifier.TASK_INSERT_FOR_LANDLORD, taskData);

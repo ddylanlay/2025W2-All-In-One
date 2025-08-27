@@ -6,12 +6,10 @@ import { FilterType } from "../../enums/FilterType";
 import { TenantSelectionUiState } from "../TenantSelectionUiState";
 import { LoadTenantApplicationsUseCase } from "/app/client/library-modules/use-cases/tenant-application/LoadTenantApplicationsUseCase";
 import {
-  acceptTenantApplicationUseCase,
-  rejectTenantApplicationUseCase,
   sendAcceptedApplicationsToLandlordUseCase
 } from "../../../../library-modules/use-cases/tenant-application/ProcessTenantApplicationUseCase";
 import { createTenantApplicationUseCase } from "/app/client/library-modules/use-cases/tenant-application/CreateTenantApplicationUseCase";
-import { Role } from "/app/shared/user-role-identifier";
+import { updateTenantApplicationStatus } from "/app/client/library-modules/domain-models/tenant-application/repositories/tenant-application-repository";
 const initialState: TenantSelectionUiState = {
   applicationsByProperty: {},
   activeFilter: FilterType.ALL,
@@ -71,14 +69,14 @@ export const createTenantApplicationAsync = createAsyncThunk(
 export const rejectTenantApplicationAsync = createAsyncThunk(
   "tenantSelection/rejectTenantApplication",
   async (applicationId: string) => {
-    return await rejectTenantApplicationUseCase(applicationId);
+    return updateTenantApplicationStatus([applicationId], TenantApplicationStatus.REJECTED, 1);
   }
 );
 
 export const acceptTenantApplicationAsync = createAsyncThunk(
   "tenantSelection/acceptTenantApplication",
   async (applicationId: string) => {
-    return await acceptTenantApplicationUseCase(applicationId);
+    return updateTenantApplicationStatus([applicationId], TenantApplicationStatus.ACCEPTED, 1);
   }
 );
 

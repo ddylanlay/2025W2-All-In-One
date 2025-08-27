@@ -3,7 +3,7 @@ import {
   apiGetTenantApplicationsByLandlordId,
   apiInsertTenantApplication,
   apiUpdateTenantApplicationStatuses,
-} from "/app/client/library-modules/apis/tenant-application/tenant-application";
+} from "/app/client/library-modules/apis/tenant-application/tenant-application-api";
 import { TenantApplication, TenantApplicationInsertData } from "../TenantApplication";
 import { mapApiTenantApplicationToTenantApplication } from "./mappers/tenant-application-mapper";
 import { TenantApplicationStatus } from "../../../../../shared/api-models/tenant-application/TenantApplicationStatus";
@@ -29,10 +29,11 @@ export async function insertTenantApplication(applicationData: TenantApplication
 
 //Update tenant application status
 export async function updateTenantApplicationStatus(
-  applicationIds: string[],
+  applicationIds: string[] | string,
   status: TenantApplicationStatus,
   step: number,
   taskId?: string
 ): Promise<void> {
   await apiUpdateTenantApplicationStatuses(applicationIds, status, step, taskId);
 }
+
