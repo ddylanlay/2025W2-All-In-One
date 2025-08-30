@@ -15,7 +15,7 @@ export async function getTenantApplicationsByPropertyId(propertyId: string): Pro
   return mappedApplications;
 }
 
-// Get tenant applications for a specific landlord
+// Get tenant applications for a specific landlord (FUTURE USE)
 export async function getTenantApplicationsByLandlordId(landlordId: string): Promise<TenantApplication[]> {
   const apiApplications = await apiGetTenantApplicationsByLandlordId(landlordId);
   const mappedApplications = apiApplications.map(mapApiTenantApplicationToTenantApplication);

@@ -4,7 +4,7 @@ import { createTaskForLandlord } from "/app/client/library-modules/domain-models
 import { TaskPriority } from "/app/shared/task-priority-identifier";
 import { Role } from "/app/shared/user-role-identifier";
 import { TenantApplicationStatus } from "/app/shared/api-models/tenant-application/TenantApplicationStatus";
-import { TenantApplication } from "/app/client/ui-modules/tenant-selection/types/TenantApplication";
+import { TenantApplication } from "/app/client/library-modules/domain-models/tenant-application/TenantApplication"
 
 export async function sendAcceptedApplicationsToLandlordUseCase(
   propertyId: string,
@@ -31,7 +31,7 @@ export async function sendAcceptedApplicationsToLandlordUseCase(
 
   // Create task for landlord
   const taskName = `Review ${acceptedApplications.length} Tenant Application(s)`;
-  const taskDescription = `Review ${acceptedApplications.length} accepted tenant application(s) for property at ${streetNumber} ${street}, ${suburb}, ${province} ${postcode}. Applicants: ${acceptedApplications.map((app: TenantApplication) => app.name).join(', ')}`;
+  const taskDescription = `Review ${acceptedApplications.length} accepted tenant application(s) for property at ${streetNumber} ${street}, ${suburb}, ${province} ${postcode}. Applicants: ${acceptedApplications.map((app: TenantApplication) => app.applicantName).join(', ')}`;
   const dueDate = calculateDueDate(7);
 
   // Create task for landlord

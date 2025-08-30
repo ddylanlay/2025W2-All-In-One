@@ -1,4 +1,4 @@
-import { TenantApplication } from './TenantApplication';
+import { TenantApplication } from '/app/client/library-modules/domain-models/tenant-application/TenantApplication';
 import { UserAccount } from '/app/client/library-modules/domain-models/user/UserAccount';
 
 export type TenantSelectionModalProps = {
@@ -6,8 +6,6 @@ export type TenantSelectionModalProps = {
   onClose: () => void;
   onReject: (applicationId: string) => void;
   onAccept: (applicationId: string) => void;
-  // onBackgroundPass: (applicationId: string) => void;
-  // onBackgroundFail: (applicationId: string) => void;
   onSendToLandlord: () => void;
   shouldShowSendToLandlordButton: boolean;
   acceptedApplicantCount: number;

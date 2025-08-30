@@ -6,8 +6,8 @@ export type ApiTenantApplication = {
   applicantName: string;
   status: TenantApplicationStatus;
   step: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   agentId: string;
   landlordId: string;
   taskId?: string;

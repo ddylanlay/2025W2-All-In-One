@@ -16,7 +16,6 @@ import { tenantSelectionSlice } from "./ui-modules/tenant-selection/state/reduce
 import { messagesSlice } from "./ui-modules/role-messages/state/reducers/messages-slice";
 import { searchResultsSlice } from "./ui-modules/search/state/search-result-slice";
 
-
 // Enable MapSet plugin for Immer to handle Set and Map objects
 enableMapSet();
 
@@ -35,8 +34,9 @@ export const store = configureStore({
     propertyForm: propertyFormSlice.reducer,
     searchResults: searchResultsSlice.reducer,
     tenantSelection: tenantSelectionSlice.reducer,
-    messages: messagesSlice.reducer
+    messages: messagesSlice.reducer,
   },
+
 });
 
 export type RootState = ReturnType<typeof store.getState>;

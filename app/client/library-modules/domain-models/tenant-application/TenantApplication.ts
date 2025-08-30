@@ -6,8 +6,8 @@ export type TenantApplication = {
   applicantName: string;
   status: TenantApplicationStatus;
   step: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string; // ISO string to avoid Redux serialization issues
+  updatedAt: string; // ISO string to avoid Redux serialization issues
   agentId: string;
   landlordId: string;
   taskId?: string;

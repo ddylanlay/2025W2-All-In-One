@@ -1,5 +1,5 @@
 import React from 'react';
-import { TenantSelectionModalProps } from './types/TenantSelectionModalProps';
+import { TenantSelectionModalProps } from './components/TenantSelectionModalProps';
 import { FilterType } from './enums/FilterType';
 import { ModalHeader } from './components/ModalHeader';
 import { FilterTabs } from './components/FilterTabs';
